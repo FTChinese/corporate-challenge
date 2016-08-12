@@ -1,0 +1,26 @@
+@function oShareGetThemeCase($theme, $property) {
+	@if (not map-has-key($o-share-themes, $theme)) {
+		@return null;
+	}
+	$theme-value: map-get($o-share-themes, $theme);
+	$color-name: map-get($theme-value, $property);
+
+	@if ($color-name == null) {
+		@return null;
+	}
+	@return $color-name;
+}
+
+@function oShareGetColorFor($theme, $property) {
+	
+	$color-name: oShareGetThemeCase($theme, $property);
+
+	@if ($color-name == null) {
+		@return false;
+	}
+
+	@if ($color-name == 'default') {
+		@return $color-name;
+	}
+	@return oColorsGetPaletteColor($color-name);
+}

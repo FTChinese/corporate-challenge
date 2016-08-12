@@ -1,0 +1,80 @@
+@import "../../main";
+
+body {
+	background-color: oColorsGetPaletteColor('pink');
+}
+
+.demo--sassvg {
+	@include oShareBase;
+
+	.o-share--default {
+		@include oShareIconDefault;
+	}
+
+	.o-share--teal {
+		@include oShareIconTeal;
+	}
+	
+	.o-share--default-hover {
+		@include oShareIconFor(wechat, default-hover);
+		@include oShareIconFor(weibo, default-hover);
+		@include oShareIconFor(linkedin, default-hover);
+		@include oShareIconFor(facebook, default-hover);
+		@include oShareIconFor(twitter, default-hover);
+	}
+	.o-share--tint {
+		@include oShareIconTint;
+		@include oShareCustomBase {
+			i {
+				width: 30px;
+				height: 30px;
+			}
+		}
+	}
+
+	.o-share--dark {
+		@include oShareIconDark;
+		background-color: #000;
+	}
+}
+
+
+.demo--sprite {
+	@include oShareSpriteBase;
+
+	@each $name in $o-share-icon-names {
+		@include oShareSpriteIcon($name);
+	}
+	ul {
+		background-color: orange;
+	}
+	
+}
+
+.demo--sprite-custom {
+	@include oShareSpriteBase {
+
+		svg {
+			fill: oColorsGetPaletteColor('pink-tint1');
+		}
+
+		a {
+			background-color: oColorsGetPaletteColor('orange-tint1');
+			&:hover {
+				background-color: oColorsGetPaletteColor('blue-tint1');
+				svg {
+					fill: oColorsGetPaletteColor('orange-tint1');
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+

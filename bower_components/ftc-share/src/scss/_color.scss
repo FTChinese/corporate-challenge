@@ -1,0 +1,23 @@
+// default - $color: 'white', $bgcolor: $icon, $bghovercolor: transparent;
+// group1 - $color: 'white', $bgcolor: 'grey-tint1', $bghovercolor: $name
+// group2 - $color: 'white', $bgcolor: 'grey-tint1', $bghovercolor: 'teal-2'
+// group3 - $color: 'pink-tint4', $bgcolor: 'transparent', $bghovercolor: 'pink-tint2'
+$o-share-themes: () !default;
+
+
+/// fill: used to fill the path of svg
+/// background: Set on the `a` element which contains the icon.
+/// hover: Set on the `a` element when hovered. If not set, `a:hover` rule will not output.
+/// Omitted color will fallback to the icon's default color as defined by `$o-icons-palette` in `ftc-icons` module
+
+/// You should at least set a `fill` or `background`, otherwise they will fallback to use the icon's default color, which will make the icon indistinguishable since foreground and background are the same.
+
+$o-share-themes: map-merge((
+	default: (fill: 'white'),
+	dark: (fill: 'white', background: 'transparent'),
+	default-hover: (fill: 'white', background:'grey-tint1',  hover: 'default'),
+
+	teal: (fill: 'white', background: 'grey-tint1', hover: 'teal-2'),
+	
+	tint: (fill: 'pink-tint4', background: 'transparent', hover: 'pink-tint2'),
+), $o-share-themes);

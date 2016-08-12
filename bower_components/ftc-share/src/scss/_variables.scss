@@ -1,0 +1,19 @@
+////
+/// @group o-share
+/// @link http://registry.origami.ft.com/components/o-share
+////
+
+/// Silent mode
+/// @type Bool
+$o-share-is-silent: true !default;
+
+$o-share-link-size: 32px !default;
+$o-share-link-padding: 4px !default;
+// default to 32px - 2 * 4px = 24px.
+// $o-share-icon-size: $o-share-link-size - 2 * $o-share-link-padding !default;
+$o-share-icon-size: 24px !default;
+$o-share-icon-radius: 50% !default;
+
+/// List of accepted social network icons, and the version
+/// @type map
+$o-share-icon-names: (wechat, weibo, linkedin, facebook, twitter);

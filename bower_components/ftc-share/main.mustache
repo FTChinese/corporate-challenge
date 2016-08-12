@@ -1,0 +1,44 @@
+<div class="o-share o-share--sprite" data-o-component="o-share">
+	<ul>
+		{{# o-share.withWechat}}
+		<li class="o-share__action o-share__wechat">
+			<a href="http://www.ftchinese.com/m/corp/qrshare.html?title={{title}}&url={{url}}&ccode=2C1A1408" target="_blank">
+				<i>微信</i>
+				<svg><use xlink:href="/bower_components/ftc-icons/sprite/social-icons.svg#social-wechat"></use></svg>
+			</a>
+		</li>
+		{{/ o-share.withWechat}}
+		{{# o-share.withWeibo}}
+		<li class="o-share__action o-share__weibo">
+			<a href="http://service.weibo.com/share/share.php?&appkey=4221537403&url={{url}}&title=【{{title}}】{{summary}}&ralateUid=1698233740&source=FT中文网&sourceUrl=http://www.ftchinese.com/&content=utf8&ccode=2G139005" target="_blank">
+				<i>微博</i>
+				<svg><use xlink:href="/bower_components/ftc-icons/sprite/social-icons.svg#social-weibo"></use></svg>
+			</a>
+		</li>
+		{{/ o-share.withWeibo}}
+		{{# o-share.withLinkedin}}
+		<li class="o-share__action o-share__linkedin">
+			<a href="http://www.linkedin.com/shareArticle?mini=true&url={{url}}&title={{title}}&summary={{summary}}&source=FT中文网" target="_blank">
+				<i>领英</i>
+				<svg><use xlink:href="/bower_components/ftc-icons/sprite/social-icons.svg#social-linkedin"></use></svg>
+			</a>
+		</li>
+		{{/ o-share.withLinkedin}}
+		{{# o-share.withFacebook}}
+		<li class="o-share__action o-share__facebook">
+			<a href="http://www.facebook.com/sharer.php?u={{url}}" target="_blank">
+				<i>Facebook</i>
+				<svg><use xlink:href="/bower_components/ftc-icons/sprite/social-icons.svg#social-facebook"></use></svg>
+			</a>
+		</li>
+		{{/ o-share.withFacebook}}
+		{{# o-share.withTwitter}}
+		<li class="o-share__action o-share__twitter">
+			<a href="https://twitter.com/intent/tweet?url={{url}}&amp;text={{title}}&amp;via=FTChinese" target="_blank">
+				<i>Twitter</i>
+				<svg><use xlink:href="/bower_components/ftc-icons/sprite/social-icons.svg#social-twitter"></use></svg>
+			</a>
+		</li>
+		{{/ o-share.withTwitter}}
+	</ul>
+</div>

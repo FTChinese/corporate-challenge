@@ -1,0 +1,14 @@
+@import "o-colors/main";
+@import "ftc-icons/main";
+
+@import "src/scss/variables";
+@import "src/scss/color";
+@import 'src/scss/functions';
+@import "src/scss/mixins";
+@import "src/scss/share";
+
+@if (not $o-share-is-silent) {
+	@include oShareBase;
+	@include oShareIconDefault;
+}
+

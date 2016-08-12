@@ -1,0 +1,43 @@
+{
+    "o-share": {
+    	"url": "http://on.ft.com/1mUdgA2",
+	    "title": "Pfizer+says+its+AstraZeneca+vow+over+big+UK+presence+is+binding",
+	    "titleExtra": "FT%2Ecom+%7C+Pharmaceuticals",
+	    "summary": "US+drugs+group+vows+to+maintain+big+British+presence",
+	    "relatedTwitterAccounts": "ftcompanies",
+    	"withWechat": true,
+    	"withWeibo": true,
+    	"withLinkedin": true,
+        "withFacebook": true,
+    	"withTwitter": true
+    },
+    "description": "This is the demo page of FTC's social sharing function",
+    "ogTitle": "FTC Share Demo",
+    "ogType": "article",
+    "ogImage": "",
+    "ogUrl": "",
+    "assetsPath": "/bower_components/ftc-icons/",
+    "title": "FTC Share Demo",
+    "shareItem": [
+      {
+        "icon": "wechat",
+        "name": "微信"
+      },
+      {
+        "icon": "weibo",
+        "name": "微博"
+      },
+      {
+        "icon": "linkedin",
+        "name": "领英"
+      },
+      {
+        "icon": "facebook",
+        "name": "Facebook"
+      },
+      {
+        "icon": "twitter",
+        "name": "Twitter"
+      }
+    ]
+}

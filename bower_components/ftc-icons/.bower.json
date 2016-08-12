@@ -1,0 +1,43 @@
+{
+  "name": "ftc-icons",
+  "description": "Icons used on FTC site",
+  "main": "main.scss",
+  "authors": [
+    "weiguo.ni <neefrankie@outlook.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "FTC",
+    "icons"
+  ],
+  "homepage": "https://github.com/FTChinese/ftc-icons",
+  "moduleType": [
+    "es6",
+    "node"
+  ],
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "demo",
+    "src",
+    ".editorconfig",
+    ".gitattribute"
+  ],
+  "dependencies": {
+    "o-colors": "^3.3.2",
+    "o-assets": "^3.0.1"
+  },
+  "devDependencies": {},
+  "version": "2.0.2",
+  "_release": "2.0.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.0.2",
+    "commit": "32cf9801b95b8688b4a0ff6f6fc25714f9babf8b"
+  },
+  "_source": "https://github.com/FTChinese/ftc-icons.git",
+  "_target": "^2.0.2",
+  "_originalSource": "ftc-icons"
+}

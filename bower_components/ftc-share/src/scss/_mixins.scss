@@ -1,0 +1,84 @@
+/// The following mixin could be used to set every instance of `o-share` separately.
+
+
+// Use it to customise the look and feel of all icons,
+//
+// @example
+// oShareSetIconStyle {
+//	padding: 10px;
+// 	background-color: #000000;
+// 	border-radius: 50%;
+// 	i {
+// 		width: 30px;
+// 		height: 30px;
+// 	}
+// }
+@mixin oShareCustomBase($classname: o-share) {
+	.#{$classname}__action {
+		a {
+			@content;
+		}
+	}
+}
+/// @param {String} $name - One of the icon names as in $o-share-icon-names.
+/// @param {String} $color - this should be a hex colour value. Used to set a background color beneath the icon. We suggest using an o-colors function.
+@mixin oShareSetIconBackground($name, $color:'default', $classname: o-share) {
+	.#{$classname}__#{$name} {
+		@if $color == 'default' {
+			$iconname: 'social-'+$name;
+			$color: oColorsGetPaletteColor($iconname);
+		}
+		a {
+			background-color: $color;
+		}
+	}
+}
+
+/// @param {String} $theme - Name of the theme
+/// @param {String} $property - Property it applies to. One of `fill`, `background`, or `hover`
+/// @param {String} $color - One of $o-colors-palette.
+@mixin oShareSetTheme($theme, $property, $color) {
+	$propmap: ($property: $color);
+
+	@if (map-has-key($o-share-themes, $theme)) {
+		$propmap: map-merge(map-get($o-share-themes, $theme), $propmap);
+	}
+
+	$newmap: ($theme: $propmap);
+
+	$o-share-themes: map-merge($o-share-themes, $newmap) !global;
+}
+
+// Some helper mixins.
+/// @param {Number} $padding - This is the padding of `a` element containing the icon element.
+@mixin oShareSetIconGap($padding, $classname: o-share) {
+	.#{$classname}__action {
+		a {
+			padding: $padding + 0px;
+		}
+	}
+}
+
+/// @param {Number} $radius - A number in px or percent. This will set the border-radius of the `a` element wrapping around icon.
+@mixin oShareSetIconRadius($radius, $classname: o-share) {
+	.#{$classname}__action {
+		a {
+			border-radius: $radius;
+		}
+	}
+}
+
+/// @param {Number} $width - This is the width to set the icon containing element to. Defaults to 24px set by `$o-share-icon-size`.
+/// @param {Number} $height - This is the height to set the icon containing element to. Defaults to null, and will use the value of $width
+@mixin oShareSetIconSize($width, $height:null, $classname: o-share) {
+
+	@if ($height == null) {
+		$height: $width
+	}
+	.#{$classname}__action {
+		i {
+			width: $width + 0px;
+			height: $height + 0px;
+		}
+	} 
+}

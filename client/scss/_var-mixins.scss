@@ -1,0 +1,71 @@
+
+$ig-primary-col-width: 6;
+
+/* $ratio: percentage(height / width) */
+@mixin igSetMediaRatio($ratio) {
+	@if unit($ratio) != "%" {
+		$ratio: percentage($ratio);
+	}
+	padding-top: $ratio;
+}
+
+// $ratio: 71.42%
+@mixin lazyloadMedia($classname: 'lazyload', $ratio: 71.42%) {
+	@if unit($ratio) != "%" {
+		$ratio: percentage($ratio);
+	}
+	.#{$classname}__outer {
+		position: relative;
+		display: block;
+		height: 0;
+		padding-top: $ratio;	
+	}
+
+	.#{$classname}__inner {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+@mixin igGridColWidth($span) {
+	@if type-of($span) == number {
+		display: block;
+
+		// Fix Safari bug
+		flex-basis: oGridColspan($span);
+		// Define width in %
+		min-width: oGridColspan($span);
+		max-width: oGridColspan($span);
+
+		// For IE8
+		width: oGridColspan($span);
+	}
+}
+
+@mixin igBackgroundOverlay {
+	&:after {
+		content: '';
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		background-color: rgba(0, 0, 0, 0.2);
+	}
+}
+
+@mixin igBackgroundMask {
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+@mixin igQuoteDivider {
+	content: '';
+	display: block;
+	width: 50%;
+	height: 1px;
+	background-color: #000;
+	margin: 0 auto;
+}
