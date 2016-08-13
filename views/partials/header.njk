@@ -10,7 +10,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="default" />
 
-<meta property="og:title" content="{{ogTitle}}"/>
+<meta property="og:title" content="{{title}}"/>
 <meta property="og:type" content="{{ogType}}"/>
 <meta property="og:image" content="{{ogImage}}"/>
 <meta property="og:url" content="{{ogUrl}}">
@@ -28,9 +28,12 @@
 <link rel="apple-touch-icon" sizes="76x76" href="{{iconsPath}}favicons/apple-touch-icon-76x76.png">
 <link href="{{iconsPath}}favicons/favicon.ico" type="image/x-icon" rel="shortcut icon" />
 
-<title>{{ogTitle}} - FT中文网</title>
+<title>{{title}} - FT中文网</title>
 
-  <link rel="stylesheet" type="text/css" href="styles/main.css">
+<link rel="stylesheet" type="text/css" href="styles/main.css">
+<!--[if IE]>
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+<![endif]-->
 </head>
 
 <body>
@@ -41,8 +44,8 @@
 
         <div class="o-header__left">
           <div class="o-header__logo">
-            <a class="o-header__logo-link" href="http://www3.ftchinese.com/app/jpmorgan/index.html" title="摩根大通企业竟跑赛">
-              <span>摩根大通企业竞跑赛</span>
+            <a class="o-header__logo-link" href="http://www3.ftchinese.com/app/jpmorgan/index.html" title="{{title}}">
+              <span>{{title}}</span>
               <img src="/images/cc-logo.png" target="_blank">
             </a>
           </div> 

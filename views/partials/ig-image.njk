@@ -1,0 +1,22 @@
+<figure class="ig-figure ig-figure--image" data-media-ratio="">
+	
+  {% if figure.link %}
+  <a href="cc-{{figure.link}}-news.html"
+  {% else %}
+  <div
+  {% endif %}
+  class="ig-figure__image lazyload__outer">
+
+    <img src="{{figure.src}}" class="lazyload__inner">
+
+  {% if figure.caption %}
+    <figcaption class="ig-figure__caption">{{figure.caption}}</figcaption>
+  {% endif %}
+
+  {% if figure.link %}
+  </a>
+  {% else %}
+  </div>
+  {% endif %}
+
+</figure>

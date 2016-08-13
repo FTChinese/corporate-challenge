@@ -1,20 +1,48 @@
 {% include "partials/header.njk" %}
 <div id="headline" class="o-grid-container">
 	<div class="o-grid-row">
-		<div class="o-grid-column">left</div>
-		<div class="o-grid-column">right</div>
+
+		{% for figure in headline%}
+		<div data-o-grid-colspan="12 M6">
+			{% include "partials/ig-image.njk" %}
+		</div>
+		{% endfor%}
+
 	</div>
 </div>
 
 <div id="top-stories" class="o-grid-container">
-	<div class="top-stories__wrapper">
-		Top-stories
+	<div class="top-stories__wrapper" data-content-url="index.md">
+
+		<article class="top-story__article">	
+		</article>
+
 	</div>
 </div>
 
-<div id="past-moments" class="o-grid-container">
+<div id="news-list" class="o-grid-container">
+	<div class="news-list__wrapper" data-o-component="o-expander">
+		<div class="">
+			<a href="2015-news01.md" class="o-toggle">上海最受欢迎的业余赛事将于9月17日在上海东方体育中心拉开帷幕</a>
+		</div>
+		<div class="">
+			<a href="2015-news02.md" class="o-toggle">今天你跑了吗？</a>
+		</div>
+		<div class="">
+			<a href="2015-news03.md" class="o-toggle">天生是“跑男”</a>
+		</div>
+		
+	</div>
+</div>
+
+<div id="gallery-by-year" class="o-grid-container">
+	<h2>历年精彩回顾</h2>
 	<div class="o-grid-row">
-		Past Events
+		{% for figure in galleryByYear %}
+		<div data-o-grid-colspan="12 M4">
+			{% include "partials/ig-image.njk" %}
+		</div>
+		{% endfor %}
 	</div>
 </div>
 

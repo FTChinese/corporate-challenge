@@ -35,6 +35,7 @@ gulp.task('index', () => {
   const DEST = '.tmp';
 
   return gulp.src('views/index.njk')
+    .pipe($.plumber())
     .pipe($.data(function() {
       return readFile('data/index.json')
         .then(function(value) {

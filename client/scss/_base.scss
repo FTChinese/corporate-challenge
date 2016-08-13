@@ -5,40 +5,24 @@ body {
   @include oColorsFor(page);
 }
 
-// Simplified version of `o-grid` layout.
-.o-grid-container {
-  @include oGridContainer();
+@include oGridGenerate;
+@include lazyloadMedia();
+
+.top-stories__wrapper {
+  margin: 40px 0;
+  h2,
+  h3 {
+    text-align: center;
+  }
+  @include igDivider; 
 }
 
-[data-o-grid-row] {
-  //display: table;
-  display: flex;
-  flex-wrap: wrap;
-
-  margin-left: -1 * oGridGutter();
-
-  @include oGridRespondTo(M) {
-    margin-left: -1 * oGridGutter(M);
-  }
-
-  @include oGridTargetIE8 {
-    margin-left: -1 * oGridGutter($o-grid-fixed-layout);
-  }
+.top-story__article {
+  padding: 1px 10%;
 }
 
-[data-o-grid-col] {
-  position: relative;
-  box-sizing: border-box;
-  flex: 1 1 0%;
-  padding-left: oGridGutter();
-
-  @include oGridRespondTo(M) {
-    padding-left: oGridGutter(M);
-  }
-
-  @include oGridTargetIE8 {
-    padding-left: oGridGutter($o-grid-fixed-layout);
-  }
+#gallery-by-year {
+  @include igSetMediaRatio(16/15);
 }
 
 figure {

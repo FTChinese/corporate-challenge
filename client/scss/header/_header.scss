@@ -59,9 +59,17 @@
 }
 
 .o-share {
-	display: none;	
+	display: none;
+	@include oShareCustomBase {
+		background-color: transparent;
+		border: 1px solid #ffffff;
+	}	
 	@include oGridRespondTo(M) {
 		display: inline-block;
 		vertical-align: middle;
 	}
+	i {
+		text-align: left;
+	}
 }
+
