@@ -13,19 +13,11 @@
 </div>
 
 <div id="main" class="o-grid-container">
-	<div class="o-grid-row">
-		<div data-o-grid-colspan="12">
-
-			<div class="news-list" data-o-component="o-expander">
-				{% for item in news %}
-				<div class="">
-					<a href="{{item.href}}" class="o-toggle">{{item.title}}</a>
-				</div>
-				{% endfor %}
-			</div>			
-		</div>
-
-	</div>
+	<div class="news-list">
+		{% for news in newsList %}
+		<article>{{news}}</article>
+		{% endfor %}
+	</div>			
 </div>
 
 <div id="gallery-by-year" class="o-grid-container">

@@ -30,21 +30,6 @@ function readJSON(filename) {
   );
 }
 
-function readFile(filename) {
-  return new Promise(
-    function(resolve, reject) {
-      fs.readFile(filename, 'utf8', function(err, data) {
-        if (err) {
-          console.log('Cannot find file: ' + filename);
-          reject(err);
-        } else {
-          resolve(data);
-        }
-      });
-    }
-  );
-}
-
 function readMd(filename) {
   return new Promise(
     function(resolve, reject) {
@@ -65,24 +50,32 @@ nunjucks.configure('views', {
 });
 
 co(function *() {
-	const files = ['data/base.json', 'data/news-list.json'];
+  const files = ['data/base.json', 'data/test.json'];
+  const [base, news] = yield Promise.all(files.map(readJSON));
 
-	const [base, news] = yield Promise.all(files.map(readJSON));
-	
-	for (let year in news) {
-		const fileName = path.resolve('.tmp', 'cc-' + year + '.html');
-		const mdArr = yield Promise.all(news[year].map(readMd));
+  for (let year in news) {
+    const fileName = path.resolve('.tmp', 'cc-' + year + '.html');
+    console.log
+    const mdArr = yield Promise.all(news[year].map(readMd));
 
-		const context = merge(base, {newsList: mdArr});
-		
-		const res = nunjucks.render('news.njk', context);
-		
-		const ws = fs.createWriteStream(fileName);
-		ws.write(res);
-		ws.on('error', () => {
-			console.log(error);
-		});
-	}
+    const context = merge(base, {newsList: mdArr});
+
+    const res = nunjucks.render('test.njk', context);
+    
+    const ws = fs.createWriteStream(fileName);
+    ws.write(res);
+    ws.on('error', () => {
+      console.log(error);
+    });
+  }
+
+ //  const files = ['public/index.md', 'public/2015-news01.md'];
+
+	// const mdArr = yield Promise.all(files.map(readMd));
+
+ //  const res = nunjucks.render('test.njk', {newsList: mdArr});
+ //  console.log(res);
+
 }).then(function (value) {
 	// console.log(value);
 }, function(err) {

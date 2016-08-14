@@ -5,20 +5,6 @@
 	"ogType": "article",
 	"ogImage": "",
 	"ogUrl": "",
-	"news": [
-		{
-			"href": "2015-news01.md",
-			"title": "上海最受欢迎的业余赛事将于9月17日在上海东方体育中心拉开帷幕"
-		},
-		{
-			"href": "2015-news02.md",
-			"title": "今天你跑了吗？"
-		},
-		{
-			"href": "2015-news03.md",
-			"title": "天生是“跑男”"
-		}
-	],
 	"galleryByYear": [
 		{
 			"caption": 2015,
