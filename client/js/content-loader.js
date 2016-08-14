@@ -1,4 +1,4 @@
-import { ajax, createElement } from './util';
+import { ajax, createElement, merge } from './util';
 
 function convertMd(md, className) {
 	var renderedMd = marked(md);
@@ -17,22 +17,34 @@ class ContentLoader {
 		} else if (!(rootEl instanceof HTMLElement)) {
 			rootEl = document.querySelector(rootEl);
 		}
-
-		this.rootEl = rootEl;
-		this.hasLoaded = false;
-		this.config.url = config.url ? config.url : rootEl.getAttribute('data-content-url')
-		if (hasLoaded) {
+		
+		if (!rootEl) {
 			return;
 		}
-		this.loadContent();
+		this.rootEl = rootEl;
+		this.hasLoaded = false;
+
+		const opts = config || {};
+		const defaultOpts = {
+			url: rootEl.getAttribute('data-content-url'),
+			className: 'ajax-content'
+		};
+		merge(opts, defaultOpts);
+		
+		if (this.hasLoaded) {
+			return;
+		}
+		this.loadContent(opts.url, opts.className);
 	}
 
-	loadContent() {
-		ajax.getData(this.config.url, (err, data) => {
+	loadContent(url, className) {
+		ajax.getData(url, (err, data) => {
 			if (err) return;
 
-			const articleEl = convertMd(data, this.config.className);
+			const articleEl = convertMd(data, className);
+
 			this.rootEl.appendChild(articleEl);
+
 			this.hasLoaded = true;
 		});
 	}

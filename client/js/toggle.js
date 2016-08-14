@@ -7,7 +7,7 @@ class Toggle {
 		const parentNode = toggleEl.parentNode
 		this.targetEl = parentNode.querySelector('.o-toggler__target');
 		this.containerEl = parentNode;
-		this.config = config;
+		this.config = config || {};
 
 		this.isOpen = false;
 	}
@@ -16,7 +16,7 @@ class Toggle {
 		this.isOpen = !this.isOpen;
 		if (this.isOpen) {
 			this.toggleEl.setAttribute('aria-expanded', 'true');
-			// load content
+			this.loadContent();
 		} else {
 			this.toggleEl.setAttribute('aria-expanded', 'false');
 		}

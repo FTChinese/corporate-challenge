@@ -1,0 +1,42 @@
+{% include "partials/header.njk" %}
+<div id="headline" class="o-grid-container">
+	<div class="o-grid-row">
+
+		<div data-o-grid-colspan="12 M6">
+			{% include "partials/ig-image.njk" %}
+		</div>
+
+		<div data-o-grid-colspan="12 M6">
+			{% include "partials/ig-video.njk" %}
+		</div>
+	</div>
+</div>
+
+<div id="main" class="o-grid-container">
+	<div class="o-grid-row">
+		<div data-o-grid-colspan="12">
+
+			<div class="news-list" data-o-component="o-expander">
+				{% for item in news %}
+				<div class="">
+					<a href="{{item.href}}" class="o-toggle">{{item.title}}</a>
+				</div>
+				{% endfor %}
+			</div>			
+		</div>
+
+	</div>
+</div>
+
+<div id="gallery-by-year" class="o-grid-container">
+	<h2>历年精彩回顾</h2>
+	<div class="o-grid-row">
+		{% for figure in galleryByYear %}
+		<div data-o-grid-colspan="12 S6 M4">
+			{% include "partials/ig-image.njk" %}
+		</div>
+		{% endfor %}
+	</div>
+</div>
+
+{% include "partials/footer.njk" %}

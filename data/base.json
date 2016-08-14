@@ -5,15 +5,6 @@
 	"ogType": "article",
 	"ogImage": "",
 	"ogUrl": "" ,
-	"headline": [
-		{
-			"link": "https://www.jpmorganchasecc.com/events.php?city_id=25",
-			"src": "images/cc-campaign-square.gif"
-		},
-		{
-			"src": "images/cc-campaign-square.gif"
-		}
-	],
 	"galleryByYear": [
 		{
 			"caption": 2015,

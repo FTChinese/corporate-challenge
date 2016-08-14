@@ -55,6 +55,31 @@ gulp.task('index', () => {
     .pipe(browserSync.stream({once:true}));
 });
 
+gulp.task('news', () => {
+  const DEST = '.tmp';
+
+  return gulp.src('views/news.njk')
+    .pipe($.plumber())
+    .pipe($.data(function() {
+      return readFile('data/news.json')
+        .then(function(value) {
+           const viewData = JSON.parse(value);
+           return viewData;
+        });      
+    }))
+    .pipe($.nunjucks.compile())
+    .pipe($.rename({
+      extname: '.html'
+    }))
+    .pipe($.size({
+      gzip: true,
+      showFiles: true
+    })) 
+    .pipe(gulp.dest(DEST))
+    .pipe(browserSync.stream({once:true}));
+});
+
+
 gulp.task('styles', function styles() {
   const DEST = '.tmp/styles';
 
@@ -107,7 +132,7 @@ gulp.task('webpack', function(done) {
 
 gulp.task('serve', 
   gulp.parallel(
-    'index', 'styles', 'webpack', 
+    'index', 'news', 'styles', 'webpack', 
 
     function serve() {
     browserSync.init({
@@ -120,7 +145,7 @@ gulp.task('serve',
       files: 'custom/**/*.{css,js,csv}'
     });
 
-    gulp.watch(['views/**/*.njk', 'data/*.json'], gulp.parallel('index'));
+    gulp.watch(['views/**/*.njk', 'data/*.json'], gulp.parallel('index', 'news'));
 
     gulp.watch('client/scss/**/**/*.scss', gulp.parallel('styles'));
   })
