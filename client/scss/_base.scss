@@ -6,23 +6,33 @@ body {
 }
 
 @include oGridGenerate;
-@include lazyloadMedia();
-
-.top-stories__wrapper {
-  margin: 40px 0;
-  h2,
-  h3 {
-    text-align: center;
-  }
-  @include igDivider; 
-}
-
-.top-story__article {
-  padding: 1px 10%;
-}
 
 #gallery-by-year {
   @include igSetMediaRatio(16/15);
+}
+
+@include lazyloadMedia;
+
+[data-media-ratio="1/2"] {
+  .lazyload__outer {
+    @include igSetMediaRatio(1/2);
+  }
+}
+[data-media-ratio="9/16"] {
+  .lazyload__outer {
+    @include igSetMediaRatio(9/16);
+  }
+}
+[data-media-ratio="16/15"] {
+  .lazyload__outer {
+    @include igSetMediaRatio(16/15);
+  }  
+}
+[data-media-ratio="7/5"] {
+  width: 90%;
+  .lazyload__outer {
+    @include igSetMediaRatio(7/5);
+  } 
 }
 
 figure {

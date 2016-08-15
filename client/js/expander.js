@@ -1,4 +1,5 @@
 import Toggle from './toggle';
+import {merge} from './util';
 
 class Expander {
 	constructor(rootEl, config) {
@@ -9,40 +10,43 @@ class Expander {
 		}
 
 		this.rootEl = rootEl;
-		const toggleMap = {};
 
-		const toggleEls = rootEl.querySelectorAll('.o-toggle');
+		this.toggleEl = rootEl.querySelector('.o-expander__toggle');
+		this.contentEl = rootEl.querySelector('.o-expander__content');
 
-		for (let i = 0, len = toggleEls.length; i < len; i++) {
-			const toggleEl = toggleEls[i]
-			const href = toggleEl.href;
-			
-			toggleMap[href] = new Toggle(toggleEl, {
-				url: href
-			});
+		config = config || {};
+		const defaultConfig = {
+			expandedToggleText: '折叠',
+			collapsedToggleText: '展开'
 		}
-		this.toggleMap = toggleMap;
-		
+		this.opts = merge(config, defaultConfig);
+
+
+		this.expanded = false;
+		this.handleClick();
 		this.rootEl.addEventListener('click', (e) => {
-			this.handleClick(e);
+			if (e.target === this.toggleEl) {
+				this.handleClick();
+			}
 		});
 	}
 
-	handleClick(e) {
-		const targetEl = e.target;
-		if (!targetEl.classList.contains('o-toggle')) {
-			return;
+	handleClick() {		
+		if (this.expanded) {
+			this.toggleEl.setAttribute('aria-expanded', 'true');
+			this.toggleEl.textContent = this.opts.expandedToggleText;
+			this.contentEl.setAttribute('aria-hidden', 'false');
+		} else {
+			this.toggleEl.setAttribute('aria-expanded', 'false');
+			this.contentEl.setAttribute('aria-hidden', 'true');
+			
+
+			this.toggleEl.textContent = this.opts.collapsedToggleText;
 		}
-		e.preventDefault();
-
-		const href = targetEl.href;
-
-		if (this.toggleMap.hasOwnProperty(href)) {
-			this.toggleMap[href].toggle();
-		} 
+		this.expanded = !this.expanded;
 	}
 
-	static init(el) {
+	static init(el, opts) {
 		const expanderInstances = [];
 		if (!el) {
 			el = document.body;
@@ -57,6 +61,7 @@ class Expander {
 		for (let i = 0; i < expanderEls.length; i++) {
 			expanderInstances.push(new Expander(expanderEls[i]));
 		}
+
 		return expanderInstances;
 	}
 }

@@ -1,4 +1,17 @@
 {
-	"2015-news": ["public/index.md", "public/2015-news01.md"],
-	"2014-news": []
+	"index": {
+		"headline": [
+			{
+				"link": "https://www.jpmorganchasecc.com/events.php?city_id=25",
+				"src": "images/cc-campaign-square.gif"
+			},
+			{
+				"src": "images/cc-campaign-square.gif"
+			}
+		],
+		"newsList": ["news/index.md"]
+	},
+	"cc-2015-news": {
+		"newsList": ["news/2015/2015-news01.md"]
+	}
 }

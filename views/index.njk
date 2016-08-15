@@ -12,25 +12,15 @@
 </div>
 
 <div id="top-stories" class="o-grid-container">
-	<div class="top-stories__wrapper" data-content-url="index.md">
-
+	<div class="top-stories__wrapper">
+		{% for news in newsList %}
+		<article class="top-stories__article">
+			{{news}}
+		</article>
+		{% endfor %}
 	</div>
 </div>
 
-<div id="news-list" class="o-grid-container">
-	<div class="news-list__wrapper" data-o-component="o-expander">
-		<div class="">
-			<a href="2015-news01.md" class="o-toggle">上海最受欢迎的业余赛事将于9月17日在上海东方体育中心拉开帷幕</a>
-		</div>
-		<div class="">
-			<a href="2015-news02.md" class="o-toggle">今天你跑了吗？</a>
-		</div>
-		<div class="">
-			<a href="2015-news03.md" class="o-toggle">天生是“跑男”</a>
-		</div>
-		
-	</div>
-</div>
 
 <div id="gallery-by-year" class="o-grid-container">
 	<h2>历年精彩回顾</h2>

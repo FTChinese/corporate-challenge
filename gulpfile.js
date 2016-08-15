@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
-const url = require('url');
+const marked = require('marked');
+const helper = require('./helper');
+
 const gulp = require('gulp');
 const browserSync = require('browser-sync').create();
 const del = require('del');
@@ -11,39 +13,29 @@ const buble = require('rollup-plugin-buble');
 const bowerResolve = require('rollup-plugin-bower-resolve');
 const webpackStream = require('webpack-stream');
 const webpackConfig = require('./webpack.config.js');
-
 var cache;
 
 const projectName = 'corporate-challenge';
 
-function readFile(filename) {
-  return new Promise(
-    function(resolve, reject) {
-      fs.readFile(filename, 'utf8', function(err, data) {
-        if (err) {
-          console.log('Cannot find file: ' + filename);
-          reject(err);
-        } else {
-          resolve(data);
-        }
-      });
-    }
-  );
-}
-
 gulp.task('index', () => {
   const DEST = '.tmp';
-
-  return gulp.src('views/index.njk')
+  const files = ['data/base.json', 'news/index.md'];
+  return gulp.src('views/*.njk')
     .pipe($.plumber())
     .pipe($.data(function() {
-      return readFile('data/index.json')
+      return Promise.all(files.map(helper.readFile))
         .then(function(value) {
-           const viewData = JSON.parse(value);
-           return viewData;
+          const base = JSON.parse(value[0]);
+          const md = marked(value[1]);
+          const data = helper.extend(base, {newsList: [md]});
+          return data;
+        }, function(err) {
+          console.log(err);
         });      
     }))
-    .pipe($.nunjucks.compile())
+    .pipe($.nunjucks.compile({}, {
+      autoescape: false
+    }))
     .pipe($.rename({
       extname: '.html'
     }))
@@ -54,31 +46,6 @@ gulp.task('index', () => {
     .pipe(gulp.dest(DEST))
     .pipe(browserSync.stream({once:true}));
 });
-
-gulp.task('news', () => {
-  const DEST = '.tmp';
-
-  return gulp.src('views/news.njk')
-    .pipe($.plumber())
-    .pipe($.data(function() {
-      return readFile('data/news.json')
-        .then(function(value) {
-           const viewData = JSON.parse(value);
-           return viewData;
-        });      
-    }))
-    .pipe($.nunjucks.compile())
-    .pipe($.rename({
-      extname: '.html'
-    }))
-    .pipe($.size({
-      gzip: true,
-      showFiles: true
-    })) 
-    .pipe(gulp.dest(DEST))
-    .pipe(browserSync.stream({once:true}));
-});
-
 
 gulp.task('styles', function styles() {
   const DEST = '.tmp/styles';
@@ -132,7 +99,7 @@ gulp.task('webpack', function(done) {
 
 gulp.task('serve', 
   gulp.parallel(
-    'index', 'news', 'styles', 'webpack', 
+    'index', 'styles', 'webpack', 
 
     function serve() {
     browserSync.init({
@@ -142,10 +109,10 @@ gulp.task('serve',
           '/bower_components': 'bower_components'
         }
       },
-      files: 'custom/**/*.{css,js,csv}'
+      files: 'public/**/*.{png,jpg,gif}'
     });
 
-    gulp.watch(['views/**/*.njk', 'data/*.json'], gulp.parallel('index', 'news'));
+    gulp.watch(['views/**/*.njk', 'data/*.json', 'news/**/*.md'], gulp.parallel('index'));
 
     gulp.watch('client/scss/**/**/*.scss', gulp.parallel('styles'));
   })
@@ -175,25 +142,9 @@ gulp.task('rollup', () => {
   });
 });
 
-gulp.task('prefix', () => {
-  return gulp.src('.tmp/index.html')
-    .pipe($.cheerio(function($, file) {
-      $('picture source').each(function() {
-        var source = $(this);
-        var srcset = source.attr('srcset')
-        if (srcset) {
-          srcset = srcset.split(',').map(function(href) {
-            return url.resolve(config.imgPrefix, href).replace('%20', ' ');
-          }).join(', ');
-          source.attr('srcset', srcset);
-        }    
-      });
-    }))
-    .pipe(gulp.dest('dist'));
-});
 
 gulp.task('images', function () {
-  const SRC = './public/images/' + projectName + '/*.{svg,png,jpg,jpeg,gif}' ;
+  const SRC = './public/images/*.{svg,png,jpg,jpeg,gif}' ;
   const DEST = path.resolve(__dirname, config.assets, 'images', projectName);
   console.log('Copying images to:', DEST);
 
@@ -237,22 +188,5 @@ gulp.task('deploy:html', function() {
 
 gulp.task('deploy', gulp.series('build', 'deploy:html'));
 
-// demos
-gulp.task('html:demo', () => {
-  console.log('Rename html to:', projectName, 'Copy all to: dist');
-  return gulp.src('.tmp/**/*.{html,css,js,map}')
-    .pipe($.if('index.html', $.rename({basename: projectName})))
-    .pipe(gulp.dest('dist'));
-});
-
-// Build an index page listing all projects sent to test serve.
 
 
-gulp.task('copy:demo', () => {
-  const DEST = path.resolve(__dirname, config.assets, 'ig-template');
-  console.log('Copy demo of', projectName, 'to', DEST);
-  return gulp.src('dist/**/*.{html,js,css,map}')
-    .pipe(gulp.dest(DEST));
-});
-
-gulp.task('demo', gulp.series('clean', gulp.parallel('index', 'styles', 'rollup', 'images'), 'html:demo', 'copy:demo'));

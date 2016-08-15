@@ -31,5 +31,14 @@
 			"link": 2011,
 			"src": "/images/2015-02.jpg"
 		}
+	],
+	"headline": [
+		{
+			"link": "https://www.jpmorganchasecc.com/events.php?city_id=25",
+			"src": "images/cc-campaign-square.gif"
+		},
+		{
+			"src": "images/cc-campaign-square.gif"
+		}
 	]
 }
