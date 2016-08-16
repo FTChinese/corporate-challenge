@@ -34,8 +34,9 @@
 <div id="main" class="o-grid-container">
 	<div class="o-grid-row">
 		<div data-o-grid-colspan="12 M8">
-
+			{% if video %}
 			{% include "partials/ig-video.njk" %}
+			{% endif %}
 
 			<div class="section section-news">
 {# 				<h2 class="section-title"><span>新闻报道</span></h2> #}

@@ -1,17 +1,21 @@
 {
 	"index": {
-		"headline": [
-			{
+		"headline": {
+			"image": {
 				"link": "https://www.jpmorganchasecc.com/events.php?city_id=25",
 				"src": "images/cc-campaign-square.gif"
 			},
-			{
-				"src": "images/cc-campaign-square.gif"
+			"video": {
+				"src": "http://p.bokecc.com/player?vid=402E9E7943F29BFD9C33DC5901307461&siteid=922662811F1A49E9&autoStart=false&width=100%&height=100%&playerid=3571A3BF2AEC8829&playertype=1"
 			}
-		],
+		},
 		"newsList": ["news/index.md"]
 	},
 	"cc-2015-news": {
+		"swiper": [],
+		"video": {
+			"src": ""
+		},
 		"newsList": ["news/2015/2015-news01.md"]
 	}
 }
