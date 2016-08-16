@@ -5,40 +5,45 @@
 	"ogType": "article",
 	"ogImage": "",
 	"ogUrl": "" ,
-	"galleryByYear": [
+	"previousEvents": [
 		{
+			"ratio": "16/15",
 			"caption": 2015,
 			"link": 2015,
 			"src": "/images/2015-02.jpg"
 		},
 		{
+			"ratio": "16/15",
 			"caption": 2014,
 			"link": 2014,
 			"src": "/images/2015-02.jpg"
 		},
 		{
+			"ratio": "16/15",
 			"caption": 2013,
 			"link": 2013,
 			"src": "/images/2015-02.jpg"
 		},
 		{
+			"ratio": "16/15",
 			"caption": 2012,
 			"link": 2012,
 			"src": "/images/2015-02.jpg"
 		},
 		{
+			"ratio": "16/15",
 			"caption": 2011,
 			"link": 2011,
 			"src": "/images/2015-02.jpg"
 		}
 	],
-	"headline": [
-		{
+	"headline": {
+		"image": {
 			"link": "https://www.jpmorganchasecc.com/events.php?city_id=25",
 			"src": "images/cc-campaign-square.gif"
 		},
-		{
-			"src": "images/cc-campaign-square.gif"
+		"video": {
+			"src": "http://p.bokecc.com/player?vid=402E9E7943F29BFD9C33DC5901307461&siteid=922662811F1A49E9&autoStart=false&width=100%&height=100%&playerid=3571A3BF2AEC8829&playertype=1"
 		}
-	]
+	}
 }

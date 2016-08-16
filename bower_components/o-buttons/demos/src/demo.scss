@@ -1,0 +1,49 @@
+$o-buttons-is-silent: false;
+
+@import "../../main";
+
+html {
+	@include oColorsFor(page);
+}
+
+body {
+	font-family: FinancierDisplayWeb, serif;
+	margin: 1em;
+}
+
+.test-page {
+	@include oColorsFor(page);
+}
+
+.demo-block {
+	margin-left: -1rem;
+	margin-right: -1rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+.white {
+	background: #ffffff;
+}
+
+.inverse {
+	background: oColorsGetPaletteColor('grey-tint5');
+}
+
+.faux-inline-block {
+	display: inline-block;
+}
+
+h2 {
+	border-top: 8px solid oColorsGetPaletteColor('pink-tint2');
+	padding-top: 0.25em;
+	margin-left: -1rem;
+	margin-right: -1rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+h3 {
+	margin-bottom: 0.5em;
+}

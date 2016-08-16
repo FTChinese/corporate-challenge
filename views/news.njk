@@ -1,114 +1,77 @@
 {% include "partials/header.njk" %}
-<div id="headline" class="o-grid-container">
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
-	<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-	    <!-- Background of PhotoSwipe. 
-	         It's a separate element as animating opacity is faster than rgba(). -->
-	    <div class="pswp__bg"></div>
-
-	    <!-- Slides wrapper with overflow:hidden. -->
-	    <div class="pswp__scroll-wrap">
-
-	        <!-- Container that holds slides. 
-	            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-	            Don't modify these 3 pswp__item elements, data is added later on. -->
-	        <div class="pswp__container">
-	            <div class="pswp__item"></div>
-	            <div class="pswp__item"></div>
-	            <div class="pswp__item"></div>
-	        </div>
-
-	        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-	        <div class="pswp__ui pswp__ui--hidden">
-
-	            <div class="pswp__top-bar">
-
-	                <!--  Controls are self-explanatory. Order can be changed. -->
-
-	                <div class="pswp__counter"></div>
-
-	                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-	                <button class="pswp__button pswp__button--share" title="Share"></button>
-
-	                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-	                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-	                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-	                <!-- element will get class pswp__preloader--active when preloader is running -->
-	                <div class="pswp__preloader">
-	                    <div class="pswp__preloader__icn">
-	                      <div class="pswp__preloader__cut">
-	                        <div class="pswp__preloader__donut"></div>
-	                      </div>
-	                    </div>
-	                </div>
-	            </div>
-
-	            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-	                <div class="pswp__share-tooltip"></div> 
-	            </div>
-
-	            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-	            </button>
-
-	            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-	            </button>
-
-	            <div class="pswp__caption">
-	                <div class="pswp__caption__center"></div>
-	            </div>
-
-	        </div>
-
+<div id="headline">
+	<div class="o-grid-container">
+		
+	
+	<!-- Slider main container -->
+	<div class="swiper-container">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+	        <!-- Slides -->
+        <div class="swiper-slide">
+        	<img data-src="images/2015/start-01.jpg" class="swiper-lazy">
+        	<div class="swiper-lazy-preloader"></div>
+        </div>
+        <div class="swiper-slide">
+					<img data-src="images/2015/start-02.jpg" class="swiper-lazy">
+					<div class="swiper-lazy-preloader"></div>
+        </div>
+        <div class="swiper-slide">
+        	<img data-src="images/2015/start-03.jpg" class="swiper-lazy">
+        	<div class="swiper-lazy-preloader"></div>
+        </div>
 	    </div>
+	    <!-- If we need pagination -->
+	    <div class="swiper-pagination swiper-pagination-white"></div>
+	    
+	    <!-- If we need navigation buttons -->
+	    <div class="swiper-button-prev swiper-button-white"></div>
+	    <div class="swiper-button-next swiper-button-white"></div>
+		</div>
 	</div>
 </div>
 
 <div id="main" class="o-grid-container">
 	<div class="o-grid-row">
 		<div data-o-grid-colspan="12 M8">
+
 			{% include "partials/ig-video.njk" %}
-			<div class="news-list">
+
+			<div class="section section-news">
+{# 				<h2 class="section-title"><span>新闻报道</span></h2> #}
 				{% for news in newsList %}
-				<article data-o-component="o-expander" class="o-expander">
-					<div class="o-expander__content">{{news}}</div>
+
+				<article data-o-component="o-expander" class="section-news__item o-expander">
+					<div class="o-expander__content">
+						{{news}}
+					</div>
 					<button class="o-expander__toggle"></button>
 				</article>
+
 				{% endfor %}
 			</div>				
 		</div>
 		<div data-o-grid-colspan="12 M4">
-			{% include "partials/ig-image.njk" %}
-			<h4>2016摩根大通企业竞跑赛上海赛事安排</h4>
-			<ul>
-				<li>日期： 2016年10月20日 星期四</li>
-				<li>时间： 下午4点鸣锣开赛</li>
-				<li>地点： 上海东方体育中心</li>
-				<li>赛程： 5.6公里（3.5英里）</li>
-			</ul>
+			<div class="section section-aside">
+				{% include "partials/ig-image.njk" %}
+				<h4>2016摩根大通企业竞跑赛上海赛事安排</h4>
+				<ul>
+					<li>日期： 2016年10月20日 星期四</li>
+					<li>时间： 下午4点鸣锣开赛</li>
+					<li>地点： 上海东方体育中心</li>
+					<li>赛程： 5.6公里（3.5英里）</li>
+				</ul>
 
-			<h4>摩根大通企业竞跑赛</h4>
-			<p>由摩根大通发起和主办的摩根大通企业竞跑赛已经连续开展了40年。这项5.6公里（3.5英里）的竞跑项目致力于推广健康竞技、团队合作以及职场友谊，共涵盖七个国家的13个城市，并且每一个城市都包含一项慈善捐助项目。摩根大通企业竞跑赛仅面向公司雇员和企业开放，2016年的注册参赛企业预计将超过7,500家；报名人数超过250,000名。</p>
+				<h4>摩根大通企业竞跑赛</h4>
+				<p>由摩根大通发起和主办的摩根大通企业竞跑赛已经连续开展了40年。这项5.6公里（3.5英里）的竞跑项目致力于推广健康竞技、团队合作以及职场友谊，共涵盖七个国家的13个城市，并且每一个城市都包含一项慈善捐助项目。摩根大通企业竞跑赛仅面向公司雇员和企业开放，2016年的注册参赛企业预计将超过7,500家；报名人数超过250,000名。</p>
 
-			<h4>摩根大通中国</h4>
-			<p>摩根大通自1921年开始其在华业务。在中国，摩根大通为客户提供广泛的金融服务，涵盖企业和投资银行、商业银行、资金服务、市场和投资者服务以及资产管理等领域。目前，我们通过在北京、上海、天津、广州、成都、哈尔滨、苏州、深圳及中山的业务网络及分支机构为中国本土及跨国公司、金融机构和政府机构提供全方位的金融服务。</p>
+				<h4>摩根大通中国</h4>
+				<p>摩根大通自1921年开始其在华业务。在中国，摩根大通为客户提供广泛的金融服务，涵盖企业和投资银行、商业银行、资金服务、市场和投资者服务以及资产管理等领域。目前，我们通过在北京、上海、天津、广州、成都、哈尔滨、苏州、深圳及中山的业务网络及分支机构为中国本土及跨国公司、金融机构和政府机构提供全方位的金融服务。</p>				
+			</div>
 		</div>
 	</div>
 		
 </div>
 
-<div id="gallery-by-year" class="o-grid-container">
-	<h2>历年精彩回顾</h2>
-	<div class="o-grid-row">
-		{% for figure in galleryByYear %}
-		<div data-o-grid-colspan="12 S6 M4">
-			{% include "partials/ig-image.njk" %}
-		</div>
-		{% endfor %}
-	</div>
-</div>
 
 {% include "partials/footer.njk" %}

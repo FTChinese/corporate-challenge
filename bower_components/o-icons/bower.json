@@ -1,0 +1,10 @@
+{
+	"name": "o-icons",
+	"main": ["main.scss"],
+	"ignore": [
+		"node_modules"
+	],
+	"dependencies": {
+		"o-assets": ">= 0.4.1 <4"
+	}
+}

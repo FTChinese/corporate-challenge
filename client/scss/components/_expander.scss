@@ -1,0 +1,33 @@
+.o-expander {
+	@include clearfix;
+}
+
+.o-expander__content {
+	&[aria-hidden=true] {
+		p, ul, ol, h4 {
+			display: none;
+		}
+		p:first-of-type {
+			display:block;
+		}
+	}
+	&[aria-hidden=false] {
+		p, ul, ol, h4 {
+			display: block;
+		}
+	}
+}
+
+.o-expander__toggle {
+	@include oButtons();
+	float: right;
+	&:before {
+		content: '';
+		@include oIconsGetSassvg(arrow-down, $color: oColorsGetPaletteColor('teal-1'));
+		margin-right: 5px;
+	}
+
+	&[aria-expanded="true"]:before {
+		@include oIconsGetSassvg(arrow-up, $color: oColorsGetPaletteColor('teal-1'));
+	}
+}

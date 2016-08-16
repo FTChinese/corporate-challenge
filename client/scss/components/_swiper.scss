@@ -1,0 +1,23 @@
+.swiper-container {
+	width: 100%;
+	height: 100%;
+	margin: 40px 0;
+}
+.swiper-slide {
+	text-align: center;
+	background-color: #000;
+	// padding: 0 40px;
+	box-sizing: border-box;
+	img {
+		width: auto;
+		height: auto;
+		max-width: 100%;
+		max-height: 100%;
+		object-fit: contain;
+	}
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+	background-color: rgba(0, 0, 0, 0.5);
+}

@@ -1,0 +1,23 @@
+{
+  "name": "o-icons",
+  "main": [
+    "main.scss"
+  ],
+  "ignore": [
+    "node_modules"
+  ],
+  "dependencies": {
+    "o-assets": ">= 0.4.1 <4"
+  },
+  "homepage": "https://github.com/Financial-Times/o-icons",
+  "version": "4.2.2",
+  "_release": "4.2.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v4.2.2",
+    "commit": "4156d18f383d1355f5bc824b300397d9974b3fcc"
+  },
+  "_source": "https://github.com/Financial-Times/o-icons.git",
+  "_target": "^4.1.1",
+  "_originalSource": "o-icons"
+}

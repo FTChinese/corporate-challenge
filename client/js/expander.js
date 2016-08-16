@@ -52,6 +52,7 @@ class Expander {
 			el = document.body;
 		} else if (!(el instanceof HTMLElement)) {
 			el = document.querySelector(el);
+			el = el ? el : document.body;
 		}
 
 		const expanderEls = el.querySelectorAll('[data-o-component=o-expander]');

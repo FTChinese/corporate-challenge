@@ -1,1 +1,61 @@
+.section-title {
+	margin: 0;
+	padding: 0;
+
+	#footer & {
+		margin-top: 20px;
+	}
+}
+
+.section-news {
+	border-top: 1px dotted;
+	@include oColorsFor(news, border);
+	margin: 20px 0;
+}
+
+.section-news__item {
+	border-bottom: 1px dotted;
+	@include oColorsFor(news, border);
+	padding: 20px 10px;
+
+	.section-news--home & {
+		padding: 0 10%;
+	}
+
+	h2, h3 {
+		text-align: center;
+		margin: 0;
+		padding: 0;
+	}
+	img {
+		box-sizing: border-box;
+		margin: 0 20px 20px 0;
+		width: 50%;
+		float: left;
+	}
+	@include clearfix;
+}
+
+.section-aside {
+	@include oColorsFor(aside, background);
+	@include oColorsFor(aside, text);
+	
+
+	h4, p, ul {
+		margin: 0;
+		padding: 10px;
+	}
+	h4 {
+		border-top: 1px solid;
+		border-bottom: 1px dotted;
+		@include oColorsFor(title);
+		margin-top: 1em;
+	}
+	p {
+		font-size: 16px;
+	}
+	li {
+		line-height: 1.7;
+	}
+}
 

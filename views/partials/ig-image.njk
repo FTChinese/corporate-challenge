@@ -1,19 +1,19 @@
-<figure class="ig-figure ig-figure--image" data-media-ratio="">
+<figure class="ig-figure ig-figure--image" data-media-ratio="{{image.ratio}}">
 	
-  {% if figure.link %}
-  <a href="{{figure.link}}-news.html" target="_blank"
+  {% if image.link %}
+  <a href="{{image.link}}-news.html" target="_blank"
   {% else %}
   <div
   {% endif %}
   class="ig-figure__image lazyload__outer">
 
-    <img src="{{figure.src}}" class="lazyload__inner">
+    <img src="{{image.src}}" class="lazyload__inner">
 
-  {% if figure.caption %}
-    <figcaption class="ig-figure__caption">{{figure.caption}}</figcaption>
+  {% if image.caption %}
+    <figcaption class="ig-figure__caption">{{image.caption}}</figcaption>
   {% endif %}
 
-  {% if figure.link %}
+  {% if image.link %}
   </a>
   {% else %}
   </div>

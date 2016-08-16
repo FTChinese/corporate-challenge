@@ -19,6 +19,7 @@
     "ftc-share": "^1.1.0",
     "o-grid": "^4.2.1",
     "marked": "^0.3.6",
-    "photoswipe": "^4.1.1"
+    "Swiper": "swiper#^3.3.1",
+    "o-buttons": "^4.0.2"
   }
 }

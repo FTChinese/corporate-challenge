@@ -14,25 +14,12 @@ Expander.init('#main');
 
 updateYear('.o-footer__year');
 
-var gallery = new PhotoSwipe(
-	document.querySelector('.pswp'), 
-	PhotoSwipeUI_Default, 
-	[
-		{
-	        src: 'https://placekitten.com/600/400',
-	        w: 600,
-	        h: 400
-	    },
-	    {
-	        src: 'https://placekitten.com/1200/900',
-	        w: 1200,
-	        h: 900
-	    }
-	], 
-	{
-	    // optionName: 'option value'
-	    // for example:
-	    index: 0 // start at first slide
-	}
-);
-gallery.init();
+var mySwiper = new Swiper('.swiper-container', {
+	pagination: '.swiper-pagination',
+	nextButton: '.swiper-button-next',
+	prevButton: '.swiper-button-prev',
+	lazyLoadingInPrevNext: true,
+	preloadImages: false,
+	lazyLoading: true,
+	paginationClickable: true
+});

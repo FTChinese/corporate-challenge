@@ -60,3 +60,10 @@ $ig-primary-col-width: 6;
 		margin: 0 auto;		
 	}
 }
+@mixin clearfix {
+	&:after {
+		clear: both;
+		content: "";
+		display: table;
+	}
+}

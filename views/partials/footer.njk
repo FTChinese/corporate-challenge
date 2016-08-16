@@ -1,3 +1,14 @@
+<div id="footer" class="o-grid-container">
+	<h2 class="section-title"><span>历年精彩回顾</span></h2>
+	<div class="o-grid-row">
+		{% for image in previousEvents %}
+		<div data-o-grid-colspan="12 S6 M4">
+			{% include "partials/ig-image.njk" %}
+		</div>
+		{% endfor %}
+	</div>
+</div>
+
 <footer class="o-footer" data-o-component="o-footer">
   <div class="o-grid-container">
     <div class="o-footer__wrapper">
@@ -8,8 +19,7 @@
   </div>      
 </footer>
 
-<script src="/bower_components/photoswipe/dist/photoswipe.js"></script>
-<script src="/bower_components/photoswipe/dist/photoswipe-ui-default.js"></script>
+<script src="/bower_components/Swiper/dist/js/swiper.js"></script>
 <script src="scripts/main.js"></script>
 
 </body>

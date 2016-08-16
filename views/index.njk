@@ -1,34 +1,26 @@
 {% include "partials/header.njk" %}
 <div id="headline" class="o-grid-container">
 	<div class="o-grid-row">
-
-		{% for figure in headline%}
+		{% if headline %}
+		{% set image = headline.image %}
 		<div data-o-grid-colspan="12 M6">
 			{% include "partials/ig-image.njk" %}
 		</div>
-		{% endfor%}
 
+		{% set video = headline.video %}
+		<div data-o-grid-colspan="12 M6">
+			{% include "partials/ig-video.njk" %}
+		</div>
+		{% endif %}
 	</div>
 </div>
 
-<div id="top-stories" class="o-grid-container">
-	<div class="top-stories__wrapper">
+<div id="main" class="o-grid-container">
+	<div class="section section-news section-news--home">
 		{% for news in newsList %}
-		<article class="top-stories__article">
+		<article class="section-news__item">
 			{{news}}
 		</article>
-		{% endfor %}
-	</div>
-</div>
-
-
-<div id="gallery-by-year" class="o-grid-container">
-	<h2>历年精彩回顾</h2>
-	<div class="o-grid-row">
-		{% for figure in galleryByYear %}
-		<div data-o-grid-colspan="12 S6 M4">
-			{% include "partials/ig-image.njk" %}
-		</div>
 		{% endfor %}
 	</div>
 </div>
