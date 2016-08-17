@@ -38,3 +38,5 @@ jspm_packages
 .tmp
 .DS_STORE
 dist
+bower_components
+pic
