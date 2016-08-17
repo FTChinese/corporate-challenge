@@ -1,19 +1,30 @@
-const promisify = require('promisify-node');
-const fs = promisify('fs');
+const fs = require('fs');
 const path = require('path');
-const stream = require('stream');
 const marked = require('marked');
 const co = require('co');
 const nunjucks = require('nunjucks');
+const mdirp = require('mkdirp');
 const helper = require('./helper');
 
 
 nunjucks.configure('views', {
-  autoescape: false
+  autoescape: false,
+  watch: true,
+  noCache: true
 });
 
 co(function *() {
 	const files = ['data/base.json', 'data/news-list.json'];
+	const destDir = '.tmp';
+
+	const stat = yield helper.stat(destDir);
+	if (!stat.isDirectory()) {
+		mkdirp(destDir, (err) => {
+			if (err) {
+				return err;
+			}
+		});
+	}
 
 	const [base, news] = yield Promise.all(files.map(helper.readJSON));
 	

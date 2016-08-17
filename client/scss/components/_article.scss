@@ -1,4 +1,4 @@
-.section-title {
+.section__title {
 	margin: 0;
 	padding: 0;
 
@@ -7,19 +7,19 @@
 	}
 }
 
-.section-news {
+.section__main {
 	border-top: 1px dotted;
 	border-bottom: 1px dotted;
 	@include oColorsFor(news, border);
 	margin: 20px 0;
 }
 
-.section-news__item {
+.article {
 	
 	@include oColorsFor(news, border);
 	padding: 20px 10px;
 
-	.section-news--home & {
+	#top-news & {
 		@include oGridRespondTo(M) {
 			max-width: 80%;
 			margin: 0 auto;
@@ -40,7 +40,7 @@
 	@include clearfix;
 }
 
-.section-aside {
+.section__aside {
 	@include oColorsFor(aside, background);
 	@include oColorsFor(aside, text);
 	

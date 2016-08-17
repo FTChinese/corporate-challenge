@@ -1,6 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 const marked = require('marked');
+const co = require('co');
+const nunjucks = require('nunjucks');
+const mdirp = require('mkdirp');
 const helper = require('./helper');
 
 const gulp = require('gulp');
@@ -46,6 +49,16 @@ gulp.task('index', () => {
     .pipe(gulp.dest(DEST))
     .pipe(browserSync.stream({once:true}));
 });
+
+nunjucks.configure('views', {
+  autoescape: false,
+  watch: true,
+  noCache: true
+});
+
+gulp.task('html', () => {
+
+})
 
 gulp.task('styles', function styles() {
   const DEST = '.tmp/styles';

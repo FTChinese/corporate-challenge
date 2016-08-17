@@ -25,18 +25,18 @@
 	</div>
 </div>
 
-<div id="main" class="o-grid-container">
+<div id="main" class="section o-grid-container">
 	<div class="o-grid-row">
 		<div data-o-grid-colspan="12 M8">
 			{% if video %}
 			{% include "partials/ig-video.njk" %}
 			{% endif %}
 
-			<div class="section section-news">
+			<div class="section__main">
 {# 				<h2 class="section-title"><span>新闻报道</span></h2> #}
 				{% for news in newsList %}
 
-				<article data-o-component="o-expander" class="section-news__item o-expander">
+				<article data-o-component="o-expander" class="article o-expander">
 					<div class="o-expander__content">
 						{{news}}
 					</div>
@@ -47,11 +47,11 @@
 			</div>				
 		</div>
 		<div data-o-grid-colspan="12 M4">
-			<div class="section section-aside">
-{# 				{% if headline %}
-				{% set image = headline.image %}
+			<aside class="section__aside">
+				{% if aside.image %}
+				{% set image = aside.image %}
 				{% include "partials/ig-image.njk" %}
-				{% endif %} #}
+				{% endif %}
 				<h4>2016摩根大通企业竞跑赛上海赛事安排</h4>
 				<ul>
 					<li>日期： 2016年10月20日 星期四</li>
@@ -65,7 +65,7 @@
 
 				<h4>摩根大通中国</h4>
 				<p>摩根大通自1921年开始其在华业务。在中国，摩根大通为客户提供广泛的金融服务，涵盖企业和投资银行、商业银行、资金服务、市场和投资者服务以及资产管理等领域。目前，我们通过在北京、上海、天津、广州、成都、哈尔滨、苏州、深圳及中山的业务网络及分支机构为中国本土及跨国公司、金融机构和政府机构提供全方位的金融服务。</p>				
-			</div>
+			</aside>
 		</div>
 	</div>
 		

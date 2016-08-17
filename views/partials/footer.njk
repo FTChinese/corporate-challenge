@@ -1,7 +1,8 @@
-<div id="footer" class="o-grid-container">
-	<h2 class="section-title"><span>历年精彩回顾</span></h2>
+<div id="footer" class="section o-grid-container">
+	<h2 class="section__title"><span>历年精彩回顾</span></h2>
 	<div class="o-grid-row">
-		{% for image in previousEvents %}
+		{% for item in previousEvents %}
+		{% set image = item.image %}
 		<div data-o-grid-colspan="12 S6 M4">
 			{% include "partials/ig-image.njk" %}
 		</div>
@@ -11,11 +12,9 @@
 
 <footer class="o-footer" data-o-component="o-footer">
   <div class="o-grid-container">
-    <div class="o-footer__wrapper">
-      <div class="o-footer__copyright">
-          <span>&#xA9; <span class="o-footer__year"></span> 摩根大通企业竞跑赛</span>
-      </div>       
-    </div>
+	  <div class="o-footer__copyright">
+    	&#xA9; <span class="o-footer__year"></span> 摩根大通企业竞跑赛
+	  </div>       
   </div>      
 </footer>
 

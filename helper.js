@@ -96,11 +96,25 @@ function readFile(filename) {
   );
 }
 
+function stat(dir) {
+  return new Promise(
+    function(resolve, reject) {
+      fs.stat(dir, (err, stats) => {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(stats);
+        }
+      });
+    }
+  );
+}
 
 module.exports = {
   merge: merge,
   extend: extend,
   readJSON: readJSON,
   readMd: readMd,
-  readFile: readFile
+  readFile: readFile,
+  stat: stat
 };
