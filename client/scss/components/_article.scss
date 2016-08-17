@@ -9,22 +9,26 @@
 
 .section-news {
 	border-top: 1px dotted;
+	border-bottom: 1px dotted;
 	@include oColorsFor(news, border);
 	margin: 20px 0;
 }
 
 .section-news__item {
-	border-bottom: 1px dotted;
+	
 	@include oColorsFor(news, border);
 	padding: 20px 10px;
 
 	.section-news--home & {
-		padding: 0 10%;
+		@include oGridRespondTo(M) {
+			max-width: 80%;
+			margin: 0 auto;
+		}
 	}
 
 	h2, h3 {
 		text-align: center;
-		margin: 0;
+		margin: 10px 0;
 		padding: 0;
 	}
 	img {
@@ -40,7 +44,6 @@
 	@include oColorsFor(aside, background);
 	@include oColorsFor(aside, text);
 	
-
 	h4, p, ul {
 		margin: 0;
 		padding: 10px;

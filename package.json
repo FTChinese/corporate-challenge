@@ -30,6 +30,7 @@
     "gulp-cssnano": "^2.1.2",
     "gulp-data": "^1.2.1",
     "gulp-eslint": "^3.0.1",
+    "gulp-gm": "0.0.8",
     "gulp-htmlmin": "^2.0.0",
     "gulp-if": "^2.0.1",
     "gulp-imagemin": "^3.0.2",
@@ -55,6 +56,7 @@
   },
   "dependencies": {
     "co": "^4.6.0",
+    "gm": "^1.23.0",
     "marked": "^0.3.6",
     "mkdirp": "^0.5.1",
     "nunjucks": "^2.4.2",

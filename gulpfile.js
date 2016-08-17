@@ -82,6 +82,26 @@ gulp.task('eslint', () => {
     .pipe($.eslint.failAfterError());
 });
 
+//crop image to 16:9 ratio and resize to 960px.
+gulp.task('gm', () => {
+  imgRatio = 9/16;
+
+  return gulp.src('pic/*.jpg')
+    .pipe($.gm(function(gmfile, done) {
+      console.log('Processing file: ', gmfile.source);
+      gmfile.size(function(err, size) {
+        var w = size.width;
+        var h = imgRatio * size.width;
+        var y = (size.height - h) / 2;
+        // var y = size.height - h;
+        done(null, gmfile
+          .crop(w, h, 0, y)
+          .resize(960));
+      });
+    }))
+    .pipe(gulp.dest('.tmp'));
+});
+
 gulp.task('webpack', function(done) {
   const DEST = '.tmp/scripts/';
   return gulp.src('client/js/main.js')

@@ -8,18 +8,12 @@
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
 	        <!-- Slides -->
+	      {% for src in swiper %}
         <div class="swiper-slide">
-        	<img data-src="images/2015/start-01.jpg" class="swiper-lazy">
+        	<img data-src="{{src}}" class="swiper-lazy">
         	<div class="swiper-lazy-preloader"></div>
         </div>
-        <div class="swiper-slide">
-					<img data-src="images/2015/start-02.jpg" class="swiper-lazy">
-					<div class="swiper-lazy-preloader"></div>
-        </div>
-        <div class="swiper-slide">
-        	<img data-src="images/2015/start-03.jpg" class="swiper-lazy">
-        	<div class="swiper-lazy-preloader"></div>
-        </div>
+        {% endfor %}
 	    </div>
 	    <!-- If we need pagination -->
 	    <div class="swiper-pagination swiper-pagination-white"></div>
@@ -54,7 +48,10 @@
 		</div>
 		<div data-o-grid-colspan="12 M4">
 			<div class="section section-aside">
+{# 				{% if headline %}
+				{% set image = headline.image %}
 				{% include "partials/ig-image.njk" %}
+				{% endif %} #}
 				<h4>2016摩根大通企业竞跑赛上海赛事安排</h4>
 				<ul>
 					<li>日期： 2016年10月20日 星期四</li>

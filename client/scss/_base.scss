@@ -20,6 +20,10 @@ body {
 [data-media-ratio="7/5"] {
   @include igSetMediaRatio(7/5);
 }
+[data-media-ratio="3/2"] {
+  @include igSetMediaRatio(3/2);
+}
+
 
 figure {
   margin: 0;

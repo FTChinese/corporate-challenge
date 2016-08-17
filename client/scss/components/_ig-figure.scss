@@ -1,18 +1,21 @@
 .ig-figure {
   margin: 0 auto;
-  padding: 15px 0;
-
-  .section-col__secondary & {
-  	padding: $o-header-height + 15px 0;
-  }
+  padding: 10px 0 0 0;
+	@include oGridRespondTo(M) {
+		padding: 20px 0 0 0;
+	}
 
 	&--mobile {
 		display: block;
+		@include oGridRespondTo(M) {
+			display: none;
+		}
 	}
 
-	@include oGridRespondTo(M) {
-		&--mobile {
-			display: none;
+	&--desktop {
+		display: none;
+		@include oGridRespondTo(M) {
+			display: block;
 		}
 	}
 
@@ -27,11 +30,6 @@
 		margin: 0;
 		padding: 15px;
 		background-color: rgba(0, 96, 156, .85);
-	}
-
-
-	&__title {
-		margin: 1em 0 0.5em 0;
 	}
 
 	&__video {

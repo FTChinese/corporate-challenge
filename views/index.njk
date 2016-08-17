@@ -1,12 +1,15 @@
 {% include "partials/header.njk" %}
 <div id="headline" class="o-grid-container">
 	<div class="o-grid-row">
-		{% if headline %}
-		{% set image = headline.image %}
+		{% if headline.images %}
 		<div data-o-grid-colspan="12 M6">
+			{% for image in headline.images%}
 			{% include "partials/ig-image.njk" %}
+			{% endfor %}
 		</div>
+		{% endif %}
 
+		{% if headline.video %}
 		{% set video = headline.video %}
 		<div data-o-grid-colspan="12 M6">
 			{% include "partials/ig-video.njk" %}
