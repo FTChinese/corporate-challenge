@@ -53,6 +53,7 @@
   "dependencies": {
     "co": "^4.6.0",
     "gm": "^1.23.0",
+    "is-there": "^4.3.3",
     "marked": "^0.3.6",
     "mkdirp": "^0.5.1",
     "nunjucks": "^2.4.2"

@@ -1,9 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 const marked = require('marked');
+const isThere = require('is-there');
 const co = require('co');
 const nunjucks = require('nunjucks');
-const mdirp = require('mkdirp');
+const mkdirp = require('mkdirp');
 const helper = require('./helper');
 
 
@@ -17,12 +18,10 @@ co(function *() {
 	const files = ['data/base.json', 'data/news-list.json'];
 	const destDir = '.tmp';
 
-	const stat = yield helper.stat(destDir);
-	if (!stat.isDirectory()) {
+	const destExists = isThere(destDir);
+	if (!destExists) {
 		mkdirp(destDir, (err) => {
-			if (err) {
-				return err;
-			}
+			if (err) console.log(err);
 		});
 	}
 
