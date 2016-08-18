@@ -20,7 +20,7 @@
 		},
 		"newsList": ["news/index.md"]
 	},
-	"cc-2015-news": {
+	"event-2015": {
 		"swiper": [
 			"/images/2015/2015-start-02.jpg",
 			"/images/2015/2015-start-03.jpg",
@@ -49,7 +49,7 @@
 			"news/2015/2015-news01.md"
 		]
 	},
-	"cc-2014-news": {
+	"event-2014": {
 		"swiper": [
 			"/images/2014/2014-01.jpg",
 			"/images/2014/2014-02.jpg",
@@ -61,7 +61,10 @@
 			"src": "http://p.bokecc.com/player?vid=402E9E7943F29BFD9C33DC5901307461&siteid=922662811F1A49E9&autoStart=false&width=100%&height=100%&playerid=3571A3BF2AEC8829&playertype=1"
 		},
 		"newsList": [
-
+			"news/2014/2014-news01.md",
+			"news/2014/2014-news02.md",
+			"news/2014/2014-news03.md",
+			"news/2014/2014-news04.md"
 		]
 	},
 	"cc-2013-news": {
@@ -76,10 +79,13 @@
 			"src": "http://p.bokecc.com/player?vid=48BA61D358F39D959C33DC5901307461&siteid=922662811F1A49E9&autoStart=false&width=100%&height=100%&playerid=3571A3BF2AEC8829&playertype=1"
 		},
 		"newsList": [
-
+			"news/2013/2013-news01.md",
+			"news/2013/2013-news02.md",
+			"news/2013/2013-news03.md",
+			"news/2013/2013-news04.md"
 		]
 	},
-	"cc-2012-news": {
+	"event-2012": {
 		"swiper": [
 			"/images/2012/2012-01.jpg",
 			"/images/2012/2012-02.jpg",
@@ -90,10 +96,13 @@
 			"src": "http://p.bokecc.com/player?vid=CAEC70E21B1C655A9C33DC5901307461&siteid=922662811F1A49E9&autoStart=false&width=100%&height=100%&playerid=3571A3BF2AEC8829&playertype=1"
 		},
 		"newsList": [
-
+			"news/2012/2012-news01.md",
+			"news/2012/2012-news02.md",
+			"news/2012/2012-news03.md",
+			"news/2012/2012-news04.md"
 		]
 	},
-	"cc-2011-news": {
+	"event-2011": {
 		"swiper": [
 			"/images/2013/2013-01.jpg",
 			"/images/2013/2013-02.jpg",
@@ -104,7 +113,10 @@
 			"src": "http://p.bokecc.com/player?vid=A3E97ED76C7F25D49C33DC5901307461&siteid=922662811F1A49E9&autoStart=false&width=100%&height=100%&playerid=3571A3BF2AEC8829&playertype=1"
 		},
 		"newsList": [
-
+			"news/2011/2011-news01.md",
+			"news/2011/2011-news02.md",
+			"news/2011/2011-news03.md",
+			"news/2011/2011-news04.md"
 		]
 	}
 }

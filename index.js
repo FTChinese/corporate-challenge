@@ -9,7 +9,7 @@ const helper = require('./helper');
 
 nunjucks.configure('views', {
   autoescape: false,
-  watch: true,
+  // watch: true,
   noCache: true
 });
 

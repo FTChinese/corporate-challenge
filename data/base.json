@@ -5,24 +5,6 @@
 	"ogType": "article",
 	"ogImage": "",
 	"ogUrl": "" ,
-	"headline": {
-		"images": [
-			{
-				"mobileOnly": true,
-				"extraStyle": "padding-top: 18.125%",
-				"link": "https://www.jpmorganchasecc.com/events.php?city_id=25",
-				"src": "images/cc-campaign-rect.gif"
-			},
-			{
-				"desktopOnly": true,
-				"link": "https://www.jpmorganchasecc.com/events.php?city_id=25",
-				"src": "images/cc-campaign-square.gif"
-			}
-		],
-		"video": {
-			"src": "http://p.bokecc.com/player?vid=402E9E7943F29BFD9C33DC5901307461&siteid=922662811F1A49E9&autoStart=false&width=100%&height=100%&playerid=3571A3BF2AEC8829&playertype=1"
-		}
-	},
 	"aside": {
 		"image": {
 			"link": "https://www.jpmorganchasecc.com/events.php?city_id=25",
@@ -31,133 +13,37 @@
 	},
 	"previousEvents": [
 		{
-			"image" : {
-				"ratio": "16/15",
-				"caption": 2015,
-				"link": "event-2015.html",
-				"src": "/images/thumbs/thumb-2015.jpg"	
-			},
-			"swiper": [
-				"/images/2015/2015-start-02.jpg",
-				"/images/2015/2015-start-03.jpg",
-				"/images/2015/2015-start-04.jpg",
-				"/images/2015/2015-start-05.jpg",
-				"/images/2015/2015-start-06.jpg",
-				"/images/2015/2015-start-07.jpg",
-				"/images/2015/2015-start-08.jpg",
-				"/images/2015/2015-start-09.jpg",
-				"/images/2015/2015-start-10.jpg",
-				"/images/2015/2015-start-11.jpg",
-				"/images/2015/2015-on-route-01.jpg",
-				"/images/2015/2015-on-route-02.jpg",
-				"/images/2015/2015-finish-01.jpg",
-				"/images/2015/2015-finish-02.jpg",
-				"/images/2015/2015-finish-03.jpg.jpg",
-				"/images/2015/2015-awards-01.jpg",
-				"/images/2015/2015-awards-02.jpg",
-				"/images/2015/2015-awards-04.jpg",
-				"/images/2015/2015-awards-05.jpg",
-				"/images/2015/2015-team-01.jpg",
-				"/images/2015/2015-team-02.jpg",
-				"/images/2015/2015-team-03.jpg" 
-			],
-			"newsList": [
-				"news/2015/2015-news01.md"
-			]
+			"ratio": "16/15",
+			"caption": 2015,
+			"link": "event-2015.html",
+			"src": "/images/thumbs/thumb-2015.jpg"	
+			
 		},
 		{
-			"image": {
-				"ratio": "16/15",
-				"caption": 2014,
-				"link": "event-2014.html",
-				"src": "/images/thumbs/thumb-2014.jpg"
-			},
-			"swiper": [
-				"/images/2014/2014-01.jpg",
-				"/images/2014/2014-02.jpg",
-				"/images/2014/2014-03.jpg",
-				"/images/2014/2014-04.jpg",
-				"/images/2014/2014-05.jpg"
-			],
-			"video": {
-				"src": "http://p.bokecc.com/player?vid=402E9E7943F29BFD9C33DC5901307461&siteid=922662811F1A49E9&autoStart=false&width=100%&height=100%&playerid=3571A3BF2AEC8829&playertype=1"
-			},
-			"newsList": [
-				"news/2014/2014-news01.md",
-				"news/2014/2014-news02.md",
-				"news/2014/2014-news03.md",
-				"news/2014/2014-news04.md"
-			]
+			"ratio": "16/15",
+			"caption": 2014,
+			"link": "event-2014.html",
+			"src": "/images/thumbs/thumb-2014.jpg"
+			
 		},
 		{
-			"image": {
-				"ratio": "16/15",
-				"caption": 2013,
-				"link": "event-2013.html",
-				"src": "/images/thumbs/thumb-2013.jpg"				
-			},
-			"swiper": [
-				"/images/2013/2013-01.jpg",
-				"/images/2013/2013-02.jpg",
-				"/images/2013/2013-03.jpg",
-				"/images/2013/2013-04.jpg",
-				"/images/2013/2013-05.jpg"
-			],
-			"video": {
-				"src": "http://p.bokecc.com/player?vid=48BA61D358F39D959C33DC5901307461&siteid=922662811F1A49E9&autoStart=false&width=100%&height=100%&playerid=3571A3BF2AEC8829&playertype=1"
-			},
-			"newsList": [
-				"news/2013/2013-news01.md",
-				"news/2013/2013-news02.md",
-				"news/2013/2013-news03.md",
-				"news/2013/2013-news04.md"
-			]			
+			"ratio": "16/15",
+			"caption": 2013,
+			"link": "event-2013.html",
+			"src": "/images/thumbs/thumb-2013.jpg"				
+						
 		},
 		{
-			"image": {
-				"ratio": "16/15",
-				"caption": 2012,
-				"link": "event-2012.html",
-				"src": "/images/thumbs/thumb-2012.jpg"				
-			},
-			"swiper": [
-				"/images/2012/2012-01.jpg",
-				"/images/2012/2012-02.jpg",
-				"/images/2012/2012-03.jpg",
-				"/images/2012/2012-04.jpg"
-			],
-			"video": {
-				"src": "http://p.bokecc.com/player?vid=CAEC70E21B1C655A9C33DC5901307461&siteid=922662811F1A49E9&autoStart=false&width=100%&height=100%&playerid=3571A3BF2AEC8829&playertype=1"
-			},
-			"newsList": [
-				"news/2012/2012-news01.md",
-				"news/2012/2012-news02.md",
-				"news/2012/2012-news03.md",
-				"news/2012/2012-news04.md"
-			]			
+			"ratio": "16/15",
+			"caption": 2012,
+			"link": "event-2012.html",
+			"src": "/images/thumbs/thumb-2012.jpg"			
 		},
 		{
-			"image": {
-				"ratio": "16/15",
-				"caption": 2011,
-				"link": "event-2011.html",
-				"src": "/images/thumbs/thumb-2011.jpg"				
-			},
-			"swiper": [
-				"/images/2013/2013-01.jpg",
-				"/images/2013/2013-02.jpg",
-				"/images/2013/2013-03.jpg",
-				"/images/2013/2013-04.jpg"
-			],
-			"video": {
-				"src": "http://p.bokecc.com/player?vid=A3E97ED76C7F25D49C33DC5901307461&siteid=922662811F1A49E9&autoStart=false&width=100%&height=100%&playerid=3571A3BF2AEC8829&playertype=1"
-			},
-			"newsList": [
-				"news/2011/2011-news01.md",
-				"news/2011/2011-news02.md",
-				"news/2011/2011-news03.md",
-				"news/2011/2011-news04.md"
-			]
+			"ratio": "16/15",
+			"caption": 2011,
+			"link": "event-2011.html",
+			"src": "/images/thumbs/thumb-2011.jpg"				
 		}
 	]
 }
