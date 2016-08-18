@@ -1,3 +1,8 @@
+#swiper {
+	@include oGridRespondTo($until: M) {
+		padding: 0;
+	}
+}
 .section__title {
 	margin: 0;
 	padding: 0;
@@ -10,12 +15,22 @@
 .section__wrapper {
 	border-bottom: 1px dotted;
 	@include oColorsFor(article, border);
-	padding: 20px 0;
+	padding: 10px 0 0 0;
+
+	@include oGridRespondTo(M) {
+		padding: 20px 0 0 0;
+	}
+
+	&--swiper {
+		padding-bottom: 10px;
+		@include oGridRespondTo(M) {
+			padding-bottom: 20px;
+		}
+	}
 }
 
 .ig-figure--video {
 	#main & {
-		padding-bottom: 20px;
 		border-bottom: 1px dotted;
 		@include oColorsFor(article, border);
 	}
