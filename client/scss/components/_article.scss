@@ -38,7 +38,7 @@
 .article {
 	border-bottom: 1px dotted;
 	@include oColorsFor(article, border);
-	padding: 20px 0 10px 0;
+	padding: 0;
 
 	&:last-child {
 		border-bottom: 0;
