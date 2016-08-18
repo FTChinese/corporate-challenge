@@ -7,17 +7,27 @@
 	}
 }
 
-.section__main {
-	border-top: 1px dotted;
+.section__wrapper {
 	border-bottom: 1px dotted;
-	@include oColorsFor(news, border);
-	margin: 20px 0;
+	@include oColorsFor(article, border);
+	padding: 20px 0;
 }
 
+.ig-figure--video {
+	#main & {
+		padding-bottom: 20px;
+		border-bottom: 1px dotted;
+		@include oColorsFor(article, border);
+	}
+}
 .article {
-	
-	@include oColorsFor(news, border);
-	padding: 20px 10px;
+	border-bottom: 1px dotted;
+	@include oColorsFor(article, border);
+	padding: 20px 0 10px 0;
+
+	&:last-child {
+		border-bottom: 0;
+	}
 
 	#top-news & {
 		@include oGridRespondTo(M) {
@@ -26,11 +36,6 @@
 		}
 	}
 
-	h2, h3 {
-		text-align: center;
-		margin: 10px 0;
-		padding: 0;
-	}
 	img {
 		box-sizing: border-box;
 		margin: 0 20px 20px 0;
@@ -38,6 +43,36 @@
 		float: left;
 	}
 	@include clearfix;
+}
+
+.article__title,
+.article__stand-first {
+	text-align: center;
+	margin: 10px 0;
+	padding: 0 40px;
+}
+
+.article__subheading {
+	font-size: 20px;
+}
+
+.article__time-byline {
+	font-size: 16px;
+	@include oColorsFor(byline, color);
+}
+
+.article__byline {
+	margin: 0;
+	padding: 0;
+	font-size: inherit;
+	display: inline-block;
+}
+
+.article__timestamp {
+	margin: 0;
+	padding: 0 0 0 10px;
+	font-size: inherit;
+	display: inline-block;
 }
 
 .section__aside {
@@ -51,7 +86,7 @@
 	h4 {
 		border-top: 1px solid;
 		border-bottom: 1px dotted;
-		@include oColorsFor(title);
+		@include oColorsFor(section-title);
 		margin-top: 1em;
 	}
 	p {

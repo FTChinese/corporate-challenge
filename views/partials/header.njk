@@ -29,7 +29,9 @@
 <link href="{{iconsPath}}favicons/favicon.ico" type="image/x-icon" rel="shortcut icon" />
 
 <title>{{title}} - FT中文网</title>
+{% if swiper %}
 <link rel="stylesheet" type="text/css" href="/bower_components/Swiper/dist/css/swiper.css">
+{% endif %}
 <link rel="stylesheet" type="text/css" href="styles/main.css">
 
 <!--[if IE]>
@@ -45,9 +47,9 @@
 
         <div class="o-header__left">
           <div class="o-header__logo">
-            <a class="o-header__logo-link" href="http://www3.ftchinese.com/app/jpmorgan/index.html" title="{{title}}">
+            <a class="o-header__logo-link" href="index.html" title="{{title}}">
               <span>{{title}}</span>
-              <img src="/images/cc-logo.png" target="_blank">
+              <img src="images/cc-logo.png" target="_blank">
             </a>
           </div> 
         </div>

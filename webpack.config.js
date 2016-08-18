@@ -1,8 +1,9 @@
 const path = require('path');
 const BowerWebpackPlugin = require('bower-webpack-plugin');
+const webpack = require('webpack');
 
 module.exports = {
-	// entry: './client/js/main.js',
+	entry: './client/js/main.js',
 	output: {
 		path: path.join(__dirname, '.tmp/scripts'),
 		filename: 'main.js',

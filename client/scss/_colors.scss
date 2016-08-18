@@ -9,10 +9,11 @@
 @include oColorsSetUseCase(ig-image, background, 'pink-tint2');
 @include oColorsSetUseCase(ig-video, background, 'grey-tint5');
 
-@include oColorsSetUseCase(news, border, 'grey-tint3');
+@include oColorsSetUseCase(article, border, 'grey-tint3');
+@include oColorsSetUseCase(byline, color, 'grey-tint2');
 
 @include oColorsSetUseCase(aside, background, 'pink-tint1');
 @include oColorsSetUseCase(aside, text, 'grey-tint5');
 
-@include oColorsSetUseCase(title, border, 'pink-tint4');
-@include oColorsSetUseCase(title, background, 'pink-tint2');
+@include oColorsSetUseCase(section-title, border, 'pink-tint4');
+@include oColorsSetUseCase(section-title, background, 'pink-tint2');

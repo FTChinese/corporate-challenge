@@ -8,7 +8,7 @@
 	"aside": {
 		"image": {
 			"link": "https://www.jpmorganchasecc.com/events.php?city_id=25",
-			"src": "images/cc-campaign-rect.gif"
+			"src": "images/cc-campaign-square.gif"
 		}
 	},
 	"previousEvents": [
@@ -16,34 +16,34 @@
 			"ratio": "16/15",
 			"caption": 2015,
 			"link": "event-2015.html",
-			"src": "/images/thumbs/thumb-2015.jpg"	
+			"src": "images/thumbs/thumb-2015.jpg"	
 			
 		},
 		{
 			"ratio": "16/15",
 			"caption": 2014,
 			"link": "event-2014.html",
-			"src": "/images/thumbs/thumb-2014.jpg"
+			"src": "images/thumbs/thumb-2014.jpg"
 			
 		},
 		{
 			"ratio": "16/15",
 			"caption": 2013,
 			"link": "event-2013.html",
-			"src": "/images/thumbs/thumb-2013.jpg"				
+			"src": "images/thumbs/thumb-2013.jpg"				
 						
 		},
 		{
 			"ratio": "16/15",
 			"caption": 2012,
 			"link": "event-2012.html",
-			"src": "/images/thumbs/thumb-2012.jpg"			
+			"src": "images/thumbs/thumb-2012.jpg"			
 		},
 		{
 			"ratio": "16/15",
 			"caption": 2011,
 			"link": "event-2011.html",
-			"src": "/images/thumbs/thumb-2011.jpg"				
+			"src": "images/thumbs/thumb-2011.jpg"				
 		}
 	]
 }

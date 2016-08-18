@@ -1,9 +1,5 @@
 .ig-figure {
   margin: 0 auto;
-  padding: 10px 0 0 0;
-	@include oGridRespondTo(M) {
-		padding: 20px 0 0 0;
-	}
 
 	&--mobile {
 		display: block;
