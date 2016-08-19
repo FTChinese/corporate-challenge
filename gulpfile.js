@@ -264,7 +264,7 @@ gulp.task('dist', function() {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('build', gulp.series('clean', 'prod', gulp.parallel('html', 'styles', 'rollup'), 'dist'));
+gulp.task('build', gulp.series('clean', 'prod', gulp.parallel('html', 'styles', 'webpack'), 'dist'));
 
 gulp.task('serve:dist', () => {
   browserSync.init({
