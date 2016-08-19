@@ -212,13 +212,17 @@ gulp.task('gm', () => {
     .pipe($.gm(function(gmfile, done) {
       console.log('Processing file: ', gmfile.source);
       gmfile.size(function(err, size) {
-        var w = size.width;
-        var h = imgRatio * size.width;
-        var y = (size.height - h) / 2;
-        // var y = size.height - h;
-        done(null, gmfile
-          .crop(w, h, 0, y)
-          .resize(960));
+        if (size.width > size.height) {
+          var w = size.width;
+          var h = imgRatio * w;
+          var y = (size.height - h) / 2;
+          done(null, gmfile
+            .crop(w, h, 0, y)
+            .resize(960));
+        } else {
+          done(null, gmfile
+            .resize(null, 540));
+        }
       });
     }))
     .pipe(gulp.dest('.tmp'));
