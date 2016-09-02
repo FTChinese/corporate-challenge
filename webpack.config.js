@@ -9,7 +9,7 @@ module.exports = {
 		filename: 'main.js',
 		sourceMapFilename: '[file].map'
 	},
-	watch: true,
+	// watch: true,
 	devtool: 'source-map',
 	module: {
 		loaders: [

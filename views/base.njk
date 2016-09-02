@@ -61,3 +61,36 @@
         
     </div><!-- o-header__container -->    
 </header>
+
+{% block main %}{% endblock %}
+
+<div id="footer" class="o-grid-container">
+  <h2 class="section-title"><span>历年精彩回顾</span></h2>
+  <div class="o-grid-row">
+    {% for image in previousEvents %}
+    <div data-o-grid-colspan="12 S6 M4">
+      {% include "partials/ig-image.njk" %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<footer class="o-footer" data-o-component="o-footer">
+  <div class="o-grid-container">
+    <div class="o-footer__wrapper">
+      <div class="o-footer__copyright">
+          <span>&#xA9; <span class="o-footer__year"></span> 摩根大通企业竞跑赛</span>
+      </div>       
+    </div>
+  </div>      
+</footer>
+
+{% if swiper %}
+<script src="/bower_components/Swiper/dist/js/swiper.min.js"></script>
+{% endif %}
+<script src="scripts/main.js"></script>
+
+</body>
+
+
+</html>
