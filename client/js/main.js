@@ -1,7 +1,5 @@
 import Share from 'ftc-share';
 import Expander from './expander';
-import ContentLoader from './content-loader';
-import { updateYear } from './util';
 
 Share.init();
 Expander.init('#main');
@@ -10,7 +8,7 @@ updateYear('.o-footer__year');
 
 
 try {
-	var mySwiper = new Swiper('.swiper-container', {
+	new Swiper('.swiper-container', {
 		pagination: '.swiper-pagination',
 		nextButton: '.swiper-button-next',
 		prevButton: '.swiper-button-prev',
@@ -23,6 +21,14 @@ try {
 	//console.log(err);
 }
 
+function updateYear(rootEl) {
+	if (!rootEl) {
+		rootEl = document.body;
+	} else if (!(rootEl instanceof HTMLElement)) {
+		rootEl = document.querySelector(rootEl);
+	}
 
-
-console.log('test webpack');
+	var year = new Date().getFullYear();
+	rootEl.textContent = year;
+	return year;
+}

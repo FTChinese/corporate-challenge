@@ -1,57 +1,38 @@
 const fs = require('fs');
+const path = require('path');
+const nunjucks = require('nunjucks');
 const marked = require('marked');
 
-/*
- * Copy the enumerable properties of `p` to `o`, and return `o`.
- * If `o` and `p` have a property by the same name, `o`'s property is left alone.
- */
-function merge(o, p) {
-	for (var prop in p) {
-		if (o.hasOwnProperty(prop)) {
-			continue;
-		} 
-		o[prop] = p[prop];
-	}
-	return o;
+var env = new nunjucks.Environment(
+  new nunjucks.FileSystemLoader(
+    [
+      path.resolve(process.cwd(), 'views'),
+    ],
+    {noCache: true}
+  ),
+  {autoescape: false}
+);
+
+function render(template, context, name) {
+  return new Promise(function(resolve, reject) {
+    env.render(template, context, function(err, result) {
+      if (err) {
+        reject(err);
+      } else {
+        if (name) {
+          resolve({
+            name: name,
+            content: result
+          });          
+        } else {
+          resolve(result);
+        }
+      }
+    });
+  });
 }
 
-// keep the original object intact;
-function merge2(o, p) {
-  var temp = {};
-  for (var k in o) {
-    temp[k] = o[k]
-  }
-  for (var prop in p) {
-    if (temp.hasOwnProperty(prop)) {
-      continue;
-    } 
-    temp[prop] = p[prop];
-  }
-  return temp;
-}
-
-
-
-function extend(o, p) {
-  for (var prop in p) {
-    o[prop] = p[prop];
-  }
-  return o;
-}
-
-// keep the original intact
-function extend2(o, p) {
-  var temp = {};
-  for (var k in o) {
-    temp[k] = o[k]
-  }
-  for (var prop in p) {
-    temp[prop] = p[prop];
-  }
-  return temp
-}
-
-function readJSON(filename) {
+function readJson(filename) {
   return new Promise(
     function(resolve, reject) {
       fs.readFile(filename, 'utf8', function(err, data) {
@@ -81,40 +62,8 @@ function readMd(filename) {
   );
 }
 
-function readFile(filename) {
-  return new Promise(
-    function(resolve, reject) {
-      fs.readFile(filename, 'utf8', function(err, data) {
-        if (err) {
-          console.log('Cannot find file: ' + filename);
-          reject(err);
-        } else {
-          resolve(data);
-        }
-      });
-    }
-  );
-}
-
-function stat(dir) {
-  return new Promise(
-    function(resolve, reject) {
-      fs.stat(dir, (err, stats) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(stats);
-        }
-      });
-    }
-  );
-}
-
 module.exports = {
-  merge: merge,
-  extend: extend,
-  readJSON: readJSON,
-  readMd: readMd,
-  readFile: readFile,
-  stat: stat
+  render: render,
+  readJson: readJson,
+  readMd: readMd
 };

@@ -1,9 +1,8 @@
-const fs = require('fs');
+const fs = require('mz/fs');
 const path = require('path');
 const marked = require('marked');
 const isThere = require('is-there');
 const co = require('co');
-const nunjucks = require('nunjucks');
 const mkdirp = require('mkdirp');
 const helper = require('./helper');
 
@@ -12,19 +11,15 @@ const browserSync = require('browser-sync').create();
 const del = require('del');
 const cssnext = require('postcss-cssnext');
 const $ = require('gulp-load-plugins')();
-const rollup = require('rollup').rollup;
-const buble = require('rollup-plugin-buble');
-const bowerResolve = require('rollup-plugin-bower-resolve');
-const uglify = require('rollup-plugin-uglify');
+
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config.js');
 
 const deployDir = '../ft-interact/';
-var cache;
+const projectName = 'corporate-challenge';
+const tmpDir = '.tmp';
 
 process.env.NODE_ENV = 'dev';
-
-const projectName = 'corporate-challenge';
 
 renderer = new marked.Renderer();
 renderer.heading = function(text, level) {
@@ -47,59 +42,68 @@ marked.setOptions({
   renderer: renderer
 });
 
-nunjucks.configure('views', {
-  autoescape: false,
-  // watch: true,
-  noCache: true
-});
 
 gulp.task('prod', function(done) {
   process.env.NODE_ENV = 'prod';
   done();
 });
 
+gulp.task('dev', function(done) {
+  process.env.NODE_ENV = 'dev';
+  done();
+});
+
 gulp.task('html', () => {
   return co(function *() {
-    const files = ['data/base.json', 'data/news-list.json'];
-    const destDir = '.tmp';
+    const dataFiles = ['base.json', 'page-list.json'];
 
-    const destExists = isThere(destDir);
-    if (!destExists) {
-      mkdirp(destDir, (err) => {
-        if (err) console.log(err);
-      });
+    if (!isThere(tmpDir)) {
+      mkdirp.sync(tmpDir);
     }
 
-    const [base, news] = yield Promise.all(files.map(helper.readJSON));
-    
-    for (let name in news) {
-      const fileData = news[name];
-
-      var tplFile = '';
-      if (name === 'index') {
-        tplFile = 'index.njk';
-      } else {
-        tplFile = 'news.njk';
+    const [base, pages] = yield Promise.all(dataFiles.map(file => {
+      const filePath = path.resolve(process.cwd(), `data/${file}`);
+      return helper.readJson(filePath);
+    }));
+// array of previous event links.
+    base.previousEvents = [];
+// read mardown files listed in page.newsList
+// Use the read content to replace the original file name array. 
+    for (let page of pages) {
+      if (page.newsList) {
+        const newsContent = yield Promise.all(page.newsList.map(file => {
+          return helper.readMd(file);
+        }));
+        page.newsList = newsContent;
       }
-
-      const htmlPath = path.resolve('.tmp', name + '.html');
-      const mdArr = yield Promise.all(fileData.newsList.map(helper.readMd));
-  // base is an object reference, so you need to override its.
-  // is it better to clone the object?
-      const context = helper.extend(base, helper.extend(fileData, {newsList: mdArr}));
-      
-      const res = nunjucks.render(tplFile, context);
-      
-      const ws = fs.createWriteStream(htmlPath);
-      ws.write(res);
-      ws.on('error', (error) => {
-        console.log(error);
-      });
+// each thumbnail should have a link pointing to itself.
+      if (page.thumbnail) {
+        page.thumbnail.link = `${page.name}.html`;
+        base.previousEvents.push(page.thumbnail);
+      }
     }
-    return;
-  }).then(function (value) {
-    // console.log(value);
-    browserSync.reload({once: true});
+
+// data are ready to be used 
+    const renderResults = yield Promise.all(pages.map(function(page) {
+
+      const template = path.basename(page.template);
+      console.log(`Using template "${template}" for "${page.name}"`);
+// merge each page content with base.
+      const context = Object.assign(page, base);
+
+      if (process.env.NODE_ENV === 'prod') {
+        context.production = true;
+      } 
+
+      return helper.render(template, context, page.name);
+    }));
+// write the rendered string to file
+    yield Promise.all(renderResults.map(result => {
+      return fs.writeFile(`${tmpDir}/${result.name}.html`, result.content, 'utf8');
+    }));
+
+  }).then(function () {
+    browserSync.reload('*.html');
   }, function(err) {
     console.log(err.stack);
   });
@@ -181,28 +185,13 @@ gulp.task('serve',
   })
 );
 
-/* build */
-
-// use rollup and buble to build js
-gulp.task('rollup', () => {
-  return rollup({
-    entry: 'client/js/main.js',
-    plugins: [
-      bowerResolve(),
-      buble(),
-      uglify()
-    ],
-    cache: cache,
-  }).then(function(bundle) {
-    cache = bundle;
-
-    return bundle.write({
-      format: 'iife',
-      dest: '.tmp/scripts/main.js',
-      sourceMap: true,
-    });
+gulp.task('clean', function() {
+  return del(['.tmp', 'dist']).then(()=>{
+    console.log('.tmp and dist deleted');
   });
 });
+
+/* build */
 
 //crop image to 16:9 ratio and resize to 960px.
 gulp.task('gm', () => {
@@ -228,6 +217,7 @@ gulp.task('gm', () => {
     .pipe(gulp.dest('.tmp'));
 });
 
+/**********deploy***********/
 
 gulp.task('images', function () {
   const SRC = './public/images/**/*.{svg,png,jpg,jpeg,gif}' ;
@@ -244,14 +234,9 @@ gulp.task('images', function () {
     .pipe(gulp.dest(DEST));
 });
 
-gulp.task('clean', function() {
-  return del(['.tmp', 'dist']).then(()=>{
-    console.log('.tmp and dist deleted');
-  });
-});
-
-/**********deploy***********/
-gulp.task('dist', function() {
+gulp.task('copy', function() {
+  const DEST = path.resolve(__dirname, deployDir, projectName);
+  console.log(`Copy .tmp dir to: ${DEST}`);
 
   return gulp.src('.tmp/**/*.*')
     .pipe($.if('*.html', 
@@ -265,27 +250,9 @@ gulp.task('dist', function() {
       gzip: true,
       showFiles: true
     }))
-    .pipe(gulp.dest('dist'));
-});
-
-gulp.task('build', gulp.series('clean', 'prod', gulp.parallel('html', 'styles', 'webpack'), 'dist'));
-
-gulp.task('serve:dist', () => {
-  browserSync.init({
-    server: {
-      baseDir: ['dist', 'public'],
-      routes: {
-        '/bower_components': 'bower_components'
-      }
-    }
-  });
-});
-
-gulp.task('copy', () => {
-  const DEST = path.resolve(__dirname, deployDir, projectName);
-  console.log('Deploying to: ', DEST);
-  return gulp.src('dist/**/*.*')
     .pipe(gulp.dest(DEST));
 });
+
+gulp.task('build', gulp.series('clean', 'prod', gulp.parallel('html', 'styles', 'webpack'), 'dev'));
 
 gulp.task('deploy', gulp.series('build', 'copy', 'images'));

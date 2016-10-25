@@ -1,5 +1,8 @@
-{
-	"index": {
+[
+	{
+		"name": "index",
+		"template": "views/index.html",
+		"pageTitle": "摩根大通企业竞跑赛2016",
 		"headline": {
 			"images": [
 				{
@@ -20,7 +23,10 @@
 		},
 		"newsList": ["news/index.md"]
 	},
-	"event-2015": {
+	{
+		"name": "event-2015",
+		"template": "views/news.html",
+		"pageTitle": "摩根大通企业竞跑赛2015",
 		"swiper": [
 			"images/2015/2015-start-02.jpg",
 			"images/2015/2015-start-03.jpg",
@@ -50,9 +56,17 @@
 			"news/2015/2015-news02.md",
 			"news/2015/2015-news03.md",
 			"news/2015/2015-news04.md"
-		]
+		],
+		"thumbnail": {
+			"ratio": "16/15",
+			"caption": 2015,
+			"src": "images/thumbs/thumb-2015.jpg"
+		}
 	},
-	"event-2014": {
+	{
+		"name": "event-2014",
+		"template": "views/news.html",
+		"pageTitle": "摩根大通企业竞跑赛2014",
 		"swiper": [
 			"images/2014/2014-01.jpg",
 			"images/2014/2014-02.jpg",
@@ -68,9 +82,17 @@
 			"news/2014/2014-news02.md",
 			"news/2014/2014-news03.md",
 			"news/2014/2014-news04.md"
-		]
+		],
+		"thumbnail": {
+			"ratio": "16/15",
+			"caption": 2014,
+			"src": "images/thumbs/thumb-2014.jpg"
+		}
 	},
-	"event-2013": {
+	{
+		"name": "event-2013",
+		"template": "views/news.html",
+		"pageTitle": "摩根大通企业竞跑赛2013",
 		"swiper": [
 			"images/2013/2013-01.jpg",
 			"images/2013/2013-02.jpg",
@@ -86,9 +108,17 @@
 			"news/2013/2013-news02.md",
 			"news/2013/2013-news03.md",
 			"news/2013/2013-news04.md"
-		]
+		],
+		"thumbnail": {
+			"ratio": "16/15",
+			"caption": 2013,
+			"src": "images/thumbs/thumb-2013.jpg"
+		}
 	},
-	"event-2012": {
+	{
+		"name": "event-2012",
+		"template": "views/news.html",
+		"pageTitle": "摩根大通企业竞跑赛2012",
 		"swiper": [
 			"images/2012/2012-01.jpg",
 			"images/2012/2012-02.jpg",
@@ -103,9 +133,17 @@
 			"news/2012/2012-news02.md",
 			"news/2012/2012-news03.md",
 			"news/2012/2012-news04.md"
-		]
+		],
+		"thumbnail": {
+			"ratio": "16/15",
+			"caption": 2012,
+			"src": "images/thumbs/thumb-2012.jpg"
+		}
 	},
-	"event-2011": {
+	{
+		"name": "event-2011",
+		"template": "views/news.html",
+		"pageTitle": "摩根大通企业竞跑赛2011",
 		"swiper": [
 			"images/2011/2011-start-01.jpg",
 			"images/2011/2011-start-02.jpg",
@@ -123,6 +161,11 @@
 			"news/2011/2011-news02.md",
 			"news/2011/2011-news03.md",
 			"news/2011/2011-news04.md"
-		]
+		],
+		"thumbnail": {
+			"ratio": "16/15",
+			"caption": 2011,
+			"src": "images/thumbs/thumb-2011.jpg"
+		}
 	}
-}
+]

@@ -1,4 +1,4 @@
-{% extends "base.njk" %}
+{% extends "base.html" %}
 {% block main %}
 <div id="swiper" class="section o-grid-container">
 	<div class="section__wrapper section__wrapper--swiper">
@@ -35,7 +35,7 @@
 		<div class="o-grid-row">
 			<div data-o-grid-colspan="12 M8">
 				{% if video %}
-				{% include "partials/ig-video.njk" %}
+				{% include "partials/ig-video.html" %}
 				{% endif %}
 
 				<div class="section__main">
@@ -56,7 +56,7 @@
 				<aside class="section__aside">
 					{% if aside.image %}
 					{% set image = aside.image %}
-					{% include "partials/ig-image.njk" %}
+					{% include "partials/ig-image.html" %}
 					{% endif %}
 					<h4>2016摩根大通企业竞跑赛上海赛事安排</h4>
 					<ul>
@@ -76,4 +76,8 @@
 		</div>		
 	</div>		
 </div>
+{% endblock %}
+
+{% block swiper %}
+<script src="/bower_components/Swiper/dist/js/swiper.min.js"></script>
 {% endblock %}

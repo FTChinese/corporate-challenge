@@ -1,4 +1,4 @@
-{% extends "base.njk" %}
+{% extends "base.html" %}
 {% block main %}
 <div id="headline" class="section o-grid-container">
 	<div class="section__wrapper">
@@ -6,7 +6,7 @@
 			{% if headline.images %}
 			<div data-o-grid-colspan="12 M6">
 				{% for image in headline.images%}
-				{% include "partials/ig-image.njk" %}
+				{% include "partials/ig-image.html" %}
 				{% endfor %}
 			</div>
 			{% endif %}
@@ -14,7 +14,7 @@
 			{% if headline.video %}
 			{% set video = headline.video %}
 			<div data-o-grid-colspan="12 M6">
-				{% include "partials/ig-video.njk" %}
+				{% include "partials/ig-video.html" %}
 			</div>
 			{% endif %}
 		</div>		

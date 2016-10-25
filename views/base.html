@@ -22,21 +22,21 @@
 <meta name="twitter:title" content="{{ogTitle}}">
 <meta name="twitter:description" content="{{description}}">
 <meta name="twitter:image" content="{{ogImage}}">
-<link rel="apple-touch-icon" sizes="180x180" href="{{iconsPath}}favicons/apple-touch-icon-180x180.png">
-<link rel="apple-touch-icon" sizes="152x152" href="{{iconsPath}}favicons/apple-touch-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="120x120" href="{{iconsPath}}favicons/apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="76x76" href="{{iconsPath}}favicons/apple-touch-icon-76x76.png">
-<link href="{{iconsPath}}favicons/favicon.ico" type="image/x-icon" rel="shortcut icon" />
 
-<title>{{title}} - FT中文网</title>
-{% if swiper %}
+{% set iconsPath = "/bower_components/ftc-logos/static" %}
+<link rel="apple-touch-icon" sizes="180x180" href="{{iconsPath}}/favicons/apple-touch-icon-180x180.png">
+<link rel="apple-touch-icon" sizes="152x152" href="{{iconsPath}}/favicons/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="120x120" href="{{iconsPath}}/favicons/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="76x76" href="{{iconsPath}}/favicons/apple-touch-icon-76x76.png">
+<link href="{{iconsPath}}/favicons/favicon.ico" type="image/x-icon" rel="shortcut icon" />
+
+<title>{{pageTitle}} - FT中文网</title>
 <link rel="stylesheet" type="text/css" href="/bower_components/Swiper/dist/css/swiper.css">
-{% endif %}
 <link rel="stylesheet" type="text/css" href="styles/main.css">
 
-<!--[if IE]>
-<script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
-<![endif]-->
+{% if production %}
+  {% include "partials/analytics.html" %}
+{% endif %}
 </head>
 
 <body>
@@ -69,7 +69,7 @@
   <div class="o-grid-row">
     {% for image in previousEvents %}
     <div data-o-grid-colspan="12 S6 M4">
-      {% include "partials/ig-image.njk" %}
+      {% include "partials/ig-image.html" %}
     </div>
     {% endfor %}
   </div>
@@ -85,11 +85,11 @@
   </div>      
 </footer>
 
-{% if swiper %}
-<script src="/bower_components/Swiper/dist/js/swiper.min.js"></script>
-{% endif %}
+{% block swiper %}{% endblock %}
 <script src="scripts/main.js"></script>
-
+{% if production %}
+<script src="http://static.ftchinese.com/js/log.js?v=6"></script>
+{% endif %}
 </body>
 
 
