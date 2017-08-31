@@ -1,7 +1,18 @@
-<figure class="ig-figure ig-figure--video" data-media-ratio="9/16">
+{# <figure class="ig-figure ig-figure--video" data-media-ratio="9/16">
   <div class="ig-figure__video lazyload__outer">
     <div class="lazyload__inner">
       <script src="{{video.src}}" type="text/javascript"></script>
     </div>
+  </div>
+</figure> #}
+
+<figure class="ig-figure ig-figure--video">
+
+  <div class="ig-figure__aspect-ratio" data-aspect-ratio="9/16">
+    {% if video.provider == "cc" %}
+    <div class="ig-figure__media">
+      <script src="{{video.src}}" type="text/javascript"></script>
+    </div>
+    {% endif %}
   </div>
 </figure>

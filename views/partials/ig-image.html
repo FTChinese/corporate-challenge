@@ -1,6 +1,5 @@
-<figure class="ig-figure ig-figure--image
-{% if image.mobileOnly %} ig-figure--mobile{% endif %}
-{% if image.desktopOnly %} ig-figure--desktop{% endif %}" data-media-ratio="{{image.ratio}}">
+{# <figure class="ig-figure ig-figure--image
+{% if image.mobileOnly %}ig-figure--mobile{% endif %}">
 	
   {% if image.link %}
   <a href="{{image.link}}" target="_blank"
@@ -16,5 +15,23 @@
   {% endif %}
 
   {% if image.link %}</a>{% else %}</div>{% endif %}
+
+</figure> #}
+<figure class="ig-figure ig-figure--image
+ig-figure--{{image.platform}}">
+
+  {% if image.link %}
+    <a class="ig-figure__aspect-ratio" href="{{image.link}}" data-aspect-ratio="{{image.ratio}}">
+  {% else %}
+    <div class="ig-figure__aspect-ratio" data-aspect-ratio="{{image.ratio}}">
+  {% endif %}
+
+    <img src="{{image.src}}" class="ig-figure__media">
+
+  {% if image.link %}
+    </a>
+  {% else %}
+    </div>
+  {% endif %}
 
 </figure>

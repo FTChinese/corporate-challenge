@@ -1,26 +1,21 @@
-const fs = require('mz/fs');
 const path = require('path');
-const marked = require('marked');
-const isThere = require('is-there');
-const co = require('co');
-const mkdirp = require('mkdirp');
-const helper = require('./helper');
-
-const gulp = require('gulp');
-const browserSync = require('browser-sync').create();
-const del = require('del');
 const cssnext = require('postcss-cssnext');
-const $ = require('gulp-load-plugins')();
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const postcss = require('gulp-postcss')
+const sourcemaps = require('gulp-sourcemaps');
 
-const webpack = require('webpack');
-const webpackConfig = require('./webpack.config.js');
+const rollup = require('rollup').rollup;
+const babili = require('rollup-plugin-babili');
+const babel = require('rollup-plugin-babel');
+
+const browserSync = require('browser-sync').create();
 
 const deployDir = '../ft-interact/';
 const projectName = 'corporate-challenge';
 const tmpDir = '.tmp';
 
-process.env.NODE_ENV = 'dev';
-
+const marked = require('marked');
 renderer = new marked.Renderer();
 renderer.heading = function(text, level) {
   var className = '';
@@ -44,13 +39,11 @@ marked.setOptions({
 
 
 gulp.task('prod', function(done) {
-  process.env.NODE_ENV = 'prod';
-  done();
+  return Promise.resolve(process.env.NODE_ENV = 'production');
 });
 
 gulp.task('dev', function(done) {
-  process.env.NODE_ENV = 'dev';
-  done();
+  return Promise.resolve(process.env.NODE_ENV = 'development')
 });
 
 gulp.task('html', () => {
@@ -110,63 +103,62 @@ gulp.task('html', () => {
 })
 
 gulp.task('styles', function styles() {
-  const DEST = '.tmp/styles';
+  const dest = '.tmp/styles';
 
-  return gulp.src('client/scss/main.scss')
-    .pipe($.changed(DEST))
-    .pipe($.plumber())
-    .pipe($.sourcemaps.init({loadMaps:true}))
-    .pipe($.sass({
-      outputStyle: 'expanded',
-      precision: 10,
-      includePaths: ['bower_components']
-    }).on('error', $.sass.logError))
-    .pipe($.postcss([
-      cssnext({
-        features: {
-          colorRgba: false
-        }
+  return gulp.src('client/*.scss')
+  .pipe(sourcemaps.init({loadMaps:true}))
+  .pipe(sass({
+    outputStyle: 'expanded',
+    precision: 10,
+    includePaths: ['bower_components']
+  }).on('error', (err) => {
+    console.log(err);
+  }))
+  // .pipe(postcss([
+  //   cssnext({
+  //     features: {
+  //       colorRgba: false
+  //     }
+  //   })
+  // ]))
+  .pipe(sourcemaps.write('./'))
+  .pipe(gulp.dest(dest))
+  .pipe(browserSync.stream({once:true}));
+});
+
+
+let cache;
+gulp.task('scripts', () => {
+  const config = {
+    entry: 'client/main.js',
+    plugins: [
+      babel({
+        exclude: 'node_modules/**'
       })
-    ]))
-    .pipe($.if(process.env.NODE_ENV === 'prod', $.cssnano()))
-    .pipe($.size({
-      gzip: true,
-      showFiles: true
-    }))
-    .pipe($.sourcemaps.write('./'))
-    .pipe(gulp.dest(DEST))
-    .pipe(browserSync.stream({once:true}));
-});
-
-gulp.task('eslint', () => {
-  return gulp.src('client/js/*.js')
-    .pipe($.eslint())
-    .pipe($.eslint.format())
-    .pipe($.eslint.failAfterError());
-});
-
-gulp.task('webpack', (done) => {
-// change webpack config if env is production.
-  if (process.env.NODE_ENV === 'prod') {
-    delete webpackConfig.watch;
-    webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin())
+    ],
+    cache: cache
   }
-  webpack(webpackConfig, function(err, stats) {
-    if (err) throw new $.util.PluginError('webpack', err);
-    $.util.log('[webpack]', stats.toString({
-      colors: $.util.colors.supportsColor,
-      chunks: false,
-      hash: false,
-      version: false
-    }))
-    browserSync.reload({once: true});
-    done();
+
+  if (process.env.NODE_ENV === 'production') {
+    config.plugins.push(babili());
+  }
+  
+  return rollup(config).then(function(bundle) {
+    cache = bundle;
+    return bundle.write({
+      dest: `${publicDir}/scripts/main.js`,
+      format: 'iife',
+      sourceMap: true
+    });
+  })
+  .catch(err => {
+    console.log(err);
   });
 });
 
 gulp.task('serve', 
   gulp.parallel(
-    'html', 'styles', 'webpack', 
+    'html', 'styles', 'scripts', 
 
     function serve() {
     browserSync.init({
@@ -184,12 +176,6 @@ gulp.task('serve',
     gulp.watch('client/scss/**/**/*.scss', gulp.parallel('styles'));
   })
 );
-
-gulp.task('clean', function() {
-  return del(['.tmp', 'dist']).then(()=>{
-    console.log('.tmp and dist deleted');
-  });
-});
 
 /* build */
 

@@ -3,16 +3,16 @@
 <div id="headline" class="section o-grid-container">
 	<div class="section__wrapper">
 		<div class="o-grid-row">
-			{% if headline.images %}
+			{% if campaignMedia.images %}
 			<div data-o-grid-colspan="12 M6">
-				{% for image in headline.images%}
+				{% for image in campaignMedia.images%}
 				{% include "partials/ig-image.html" %}
 				{% endfor %}
 			</div>
 			{% endif %}
 
-			{% if headline.video %}
-			{% set video = headline.video %}
+			{% if campaignMedia.video %}
+			{% set video = campaignMedia.video %}
 			<div data-o-grid-colspan="12 M6">
 				{% include "partials/ig-video.html" %}
 			</div>
@@ -23,18 +23,10 @@
 </div>
 
 <div id="top-news" class="section o-grid-container">
-	<div class="section__wrapper">
-		<div class="o-grid-row">
-			<div data-o-grid-colspan="12">
-				<div class="section__main">
-					{% for news in newsList %}
-					<article class="article">
-						{{news}}
-					</article>
-					{% endfor %}
-				</div>				
-			</div>
-		</div>
-	</div>
+	{% for article in articles %}
+		<article class="article">
+			{% markdown article %}
+		</article>
+	{% endfor %}
 </div>
 {% endblock %}
