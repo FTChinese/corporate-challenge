@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block main %}
 <div id="swiper" class="section o-grid-container">
-	<div class="section__wrapper section__wrapper--swiper">
+	<div class="swiper__wrapper section__wrapper section__wrapper--swiper">
 	
 	<!-- Slider main container -->
 	<div class="swiper-container">
@@ -32,33 +32,29 @@
 
 <div id="main" class="o-grid-container">
 	<div class="o-grid-row">
-		<div class="o-grid-colspan content-main" data-o-grid-colspan="12 M8">
+		<div class="o-grid-colspan content-main">
 			{% if video %}
-			{% include "partials/ig-video.html" %}
+				{% include "partials/ig-video.html" %}
 			{% endif %}
 
-			<div class="section__main">
-				{% for article in articles %}
-
-				<article data-o-component="o-expander" class="article o-expander">
+			{% for article in articles %}
+				<article class="content-main__article o-expander" data-o-component="o-expander" >
 					<div class="o-expander__content">
 						{% markdown article %}
 					</div>
 					<button class="o-expander__toggle"></button>
 				</article>
-
-				{% endfor %}
-			</div>				
+			{% endfor %}			
 		</div>
-		<div class="o-grid-colspan content-aside" data-o-grid-colspan="12 M4">
-			<aside class="section__aside">
+		<aside class="o-grid-colspan content-aside">
+			<div class="content-aside__wrapper">
 				{% if asidePitch.image %}
 					{% set image = asidePitch.image %}
 					{% include "partials/ig-image.html" %}
 				{% endif %}
 				{% markdown "articles/aside-pitch.md" %}
-			</aside>
-		</div>
+			</div>
+		</aside>
 	</div>				
 </div>
 {% endblock %}
