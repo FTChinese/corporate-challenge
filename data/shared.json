@@ -1,0 +1,47 @@
+{
+  "asidePitch": {
+    "image": {
+      "link": "http://www.jpmorgancc.com",
+      "src": "images/2017-pitch.jpg",
+      "ratio": "9/16"
+    }
+  },
+  "pastSnapshots": [
+    {
+      "ratio": "16/15",
+      "caption": 2016,
+      "src": "images/thumbs/thumb-2016.jpg",
+      "link": "2016.html"
+    },
+    {
+			"ratio": "16/15",
+			"caption": 2015,
+      "src": "images/thumbs/thumb-2015.jpg",
+      "link": "event-2015.html"
+    },
+    {
+			"ratio": "16/15",
+			"caption": 2014,
+      "src": "images/thumbs/thumb-2014.jpg",
+      "link": "event-2014.html"
+    },
+    {
+			"ratio": "16/15",
+			"caption": 2013,
+      "src": "images/thumbs/thumb-2013.jpg",
+      "link": "event-2013.html"
+    },
+    {
+			"ratio": "16/15",
+			"caption": 2012,
+      "src": "images/thumbs/thumb-2012.jpg",
+      "link": "event-2012.html"
+    },
+    {
+			"ratio": "16/15",
+			"caption": 2011,
+      "src": "images/thumbs/thumb-2011.jpg",
+      "link": "event-2011.html"
+		}
+  ]
+}

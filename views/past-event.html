@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block main %}
+<div id="swiper" class="section o-grid-container">
+	<div class="section__wrapper section__wrapper--swiper">
+	
+	<!-- Slider main container -->
+	<div class="swiper-container">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+	        <!-- Slides -->
+	      {% for src in swipingImages %}
+        <div class="swiper-slide">
+        	<div class="placeholder">
+        		<div class="placeholder__outer">
+        			<img data-src="{{src}}" class="swiper-lazy placeholder__inner">
+        		</div>
+        	</div>
+        	
+        	<div class="swiper-lazy-preloader"></div>
+        </div>
+        {% endfor %}
+	    </div>
+	    <!-- If we need pagination -->
+	    <div class="swiper-pagination swiper-pagination-white"></div>
+	    
+	    <!-- If we need navigation buttons -->
+	    <div class="swiper-button-prev swiper-button-white"></div>
+	    <div class="swiper-button-next swiper-button-white"></div>
+		</div>
+	</div>
+</div>
+
+<div id="main" class="o-grid-container">
+	<div class="o-grid-row">
+		<div class="o-grid-colspan content-main" data-o-grid-colspan="12 M8">
+			{% if video %}
+			{% include "partials/ig-video.html" %}
+			{% endif %}
+
+			<div class="section__main">
+				{% for article in articles %}
+
+				<article data-o-component="o-expander" class="article o-expander">
+					<div class="o-expander__content">
+						{% markdown article %}
+					</div>
+					<button class="o-expander__toggle"></button>
+				</article>
+
+				{% endfor %}
+			</div>				
+		</div>
+		<div class="o-grid-colspan content-aside" data-o-grid-colspan="12 M4">
+			<aside class="section__aside">
+				{% if asidePitch.image %}
+					{% set image = asidePitch.image %}
+					{% include "partials/ig-image.html" %}
+				{% endif %}
+				{% markdown "articles/aside-pitch.md" %}
+			</aside>
+		</div>
+	</div>				
+</div>
+{% endblock %}

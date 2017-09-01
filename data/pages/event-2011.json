@@ -1,0 +1,30 @@
+{
+  "template": "past-event.html",
+  "meta": {
+    "title": "摩根大通企业竞跑赛2011",
+    "description": "",
+    "og": {
+      "title": "",
+      "description": "",
+      "image": ""
+    }
+  },
+  "swipingImages": [
+    "images/2011/2011-start-01.jpg",
+    "images/2011/2011-start-02.jpg",
+    "images/2011/2011-start-03.jpg",
+    "images/2011/2011-start-04.jpg",
+    "images/2011/2011-onroute-01.jpg",
+    "images/2011/2011-finish-01.jpg",
+    "images/2011/2011-finish-02.jpg"
+  ],
+  "video": {
+    "src": "http://p.bokecc.com/player?vid=A3E97ED76C7F25D49C33DC5901307461&siteid=922662811F1A49E9&autoStart=false&width=100%&height=100%&playerid=3571A3BF2AEC8829&playertype=1"
+  },
+  "articles": [
+    "articles/2011/2011-news01.md",
+    "articles/2011/2011-news02.md",
+    "articles/2011/2011-news03.md",
+    "articles/2011/2011-news04.md"
+  ]
+}

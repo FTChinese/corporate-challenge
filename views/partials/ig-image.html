@@ -1,37 +1,15 @@
-{# <figure class="ig-figure ig-figure--image
-{% if image.mobileOnly %}ig-figure--mobile{% endif %}">
-	
+<figure class="cc-media__container">
+
   {% if image.link %}
-  <a href="{{image.link}}" target="_blank"
+    <a class="cc-media__wrapper" href="{{image.link}}" target="_blank" data-aspect-ratio="{{image.ratio}}">
   {% else %}
-  <div
+    <div class="cc-media__wrapper" data-aspect-ratio="{{image.ratio}}">
   {% endif %}
-  class="ig-figure__image lazyload__outer"{% if image.extraStyle %} style="{{image.extraStyle}}"{% endif %}>
 
-    <img src="{{image.src}}" class="lazyload__inner">
-
+  <img src="{{image.src}}" class="cc-media">
   {% if image.caption %}
-    <figcaption class="ig-figure__caption">{{image.caption}}</figcaption>
+    <figcaption class="cc-media__caption">{{image.caption}}</figcaption>
   {% endif %}
-
   {% if image.link %}</a>{% else %}</div>{% endif %}
-
-</figure> #}
-<figure class="ig-figure ig-figure--image
-ig-figure--{{image.platform}}">
-
-  {% if image.link %}
-    <a class="ig-figure__aspect-ratio" href="{{image.link}}" data-aspect-ratio="{{image.ratio}}">
-  {% else %}
-    <div class="ig-figure__aspect-ratio" data-aspect-ratio="{{image.ratio}}">
-  {% endif %}
-
-    <img src="{{image.src}}" class="ig-figure__media">
-
-  {% if image.link %}
-    </a>
-  {% else %}
-    </div>
-  {% endif %}
-
+  
 </figure>

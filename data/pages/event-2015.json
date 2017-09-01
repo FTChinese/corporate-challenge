@@ -1,0 +1,42 @@
+{
+  "template": "past-event.html",
+  "meta": {
+    "title": "摩根大通企业竞跑赛2015",
+    "description": "",
+    "og": {
+      "title": "",
+      "description": "",
+      "image": ""
+    }
+  },
+  "swipingImages": [
+    "images/2015/2015-start-02.jpg",
+    "images/2015/2015-start-03.jpg",
+    "images/2015/2015-start-04.jpg",
+    "images/2015/2015-start-05.jpg",
+    "images/2015/2015-start-06.jpg",
+    "images/2015/2015-start-07.jpg",
+    "images/2015/2015-start-08.jpg",
+    "images/2015/2015-start-09.jpg",
+    "images/2015/2015-start-10.jpg",
+    "images/2015/2015-start-11.jpg",
+    "images/2015/2015-on-route-01.jpg",
+    "images/2015/2015-on-route-02.jpg",
+    "images/2015/2015-finish-01.jpg",
+    "images/2015/2015-finish-02.jpg",
+    "images/2015/2015-finish-03.jpg.jpg",
+    "images/2015/2015-awards-01.jpg",
+    "images/2015/2015-awards-02.jpg",
+    "images/2015/2015-awards-04.jpg",
+    "images/2015/2015-awards-05.jpg",
+    "images/2015/2015-team-01.jpg",
+    "images/2015/2015-team-02.jpg",
+    "images/2015/2015-team-03.jpg" 
+  ],
+  "articles": [
+    "articles/2015/2015-news01.md",
+    "articles/2015/2015-news02.md",
+    "articles/2015/2015-news03.md",
+    "articles/2015/2015-news04.md"
+  ]
+}

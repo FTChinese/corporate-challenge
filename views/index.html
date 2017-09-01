@@ -1,25 +1,21 @@
 {% extends "base.html" %}
 {% block main %}
-<div id="headline" class="section o-grid-container">
-	<div class="section__wrapper">
-		<div class="o-grid-row">
-			{% if campaignMedia.images %}
-			<div data-o-grid-colspan="12 M6">
-				{% for image in campaignMedia.images%}
+<div class="banner-media o-grid-container">
+	<div class="o-grid-row">
+		{% if bannerPitch.image %}
+			{% set image = bannerPitch.image %}
+			<div class="banner-col o-grid-colspan" data-o-grid-colspan="12 M6">
 				{% include "partials/ig-image.html" %}
-				{% endfor %}
 			</div>
-			{% endif %}
+		{% endif %}
 
-			{% if campaignMedia.video %}
-			{% set video = campaignMedia.video %}
-			<div data-o-grid-colspan="12 M6">
+		{% if bannerPitch.video %}
+			{% set video = bannerPitch.video %}
+			<div class="banner-col o-grid-colspan" data-o-grid-colspan="12 M6">
 				{% include "partials/ig-video.html" %}
 			</div>
-			{% endif %}
-		</div>		
+		{% endif %}
 	</div>
-
 </div>
 
 <div id="top-news" class="section o-grid-container">

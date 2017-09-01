@@ -1,0 +1,23 @@
+{
+  "template": "past-event.html",
+  "meta": {
+    "title": "摩根大通企业竞跑赛2016",
+    "description": "",
+    "og": {
+      "title": "",
+      "description": "",
+      "image": ""
+    }
+  },
+  "swipingImages": [
+    "images/2016/pic1_manyPeople.jpeg",
+    "images/2016/pic2_menChampion.jpg",
+    "images/2016/pic3_womenChampion.jpg",
+    "images/2016/pic4_presentationOfAward.jpg"
+  ],
+  "articles": [
+    "articles/2016/2016-03.md",
+    "articles/2016/2016-02.md",
+    "articles/2016/2016-01.md"
+  ]
+}

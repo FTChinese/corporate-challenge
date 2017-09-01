@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf public/*",
     "postversion": "git push && git push --tags",
     "postinstall": "bower install",
     "build-sass": "node-sass --include-path=bower_components --output-style=compressed client/main.scss public/styles/main.css",

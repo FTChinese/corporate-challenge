@@ -4,39 +4,16 @@ const gulp = require('gulp');
 const sass = require('gulp-sass');
 const postcss = require('gulp-postcss')
 const sourcemaps = require('gulp-sourcemaps');
-
-const rollup = require('rollup').rollup;
-const babili = require('rollup-plugin-babili');
-const babel = require('rollup-plugin-babel');
-
 const browserSync = require('browser-sync').create();
+const gm = require('gulp-gm');
+const imagemin = require('gulp-imagemin');
+
+const buildHTML = require('./util/build-page.js');
+const buildES = require('./util/build-es.js');
 
 const deployDir = '../ft-interact/';
-const projectName = 'corporate-challenge';
-const tmpDir = '.tmp';
-
-const marked = require('marked');
-renderer = new marked.Renderer();
-renderer.heading = function(text, level) {
-  var className = '';
-  switch (level) {
-    case 3:
-      className = 'article__stand-first'
-      break;
-    case 4:
-      className = 'article__subheading';
-      break;
-    default:
-      className = 'article__title';
-  }
-
-    return `<h${level} class="${className}">${text}</h${level}>`
-}
-
-marked.setOptions({
-  renderer: renderer
-});
-
+const projectName = path.basename(__dirname);
+const publicDir = 'public';
 
 gulp.task('prod', function(done) {
   return Promise.resolve(process.env.NODE_ENV = 'production');
@@ -47,65 +24,20 @@ gulp.task('dev', function(done) {
 });
 
 gulp.task('html', () => {
-  return co(function *() {
-    const dataFiles = ['base.json', 'page-list.json'];
-
-    if (!isThere(tmpDir)) {
-      mkdirp.sync(tmpDir);
-    }
-
-    const [base, pages] = yield Promise.all(dataFiles.map(file => {
-      const filePath = path.resolve(process.cwd(), `data/${file}`);
-      return helper.readJson(filePath);
-    }));
-// array of previous event links.
-    base.previousEvents = [];
-// read mardown files listed in page.newsList
-// Use the read content to replace the original file name array. 
-    for (let page of pages) {
-      if (page.newsList) {
-        const newsContent = yield Promise.all(page.newsList.map(file => {
-          return helper.readMd(file);
-        }));
-        page.newsList = newsContent;
-      }
-// each thumbnail should have a link pointing to itself.
-      if (page.thumbnail) {
-        page.thumbnail.link = `${page.name}.html`;
-        base.previousEvents.push(page.thumbnail);
-      }
-    }
-
-// data are ready to be used 
-    const renderResults = yield Promise.all(pages.map(function(page) {
-
-      const template = path.basename(page.template);
-      console.log(`Using template "${template}" for "${page.name}"`);
-// merge each page content with base.
-      const context = Object.assign(page, base);
-
-      if (process.env.NODE_ENV === 'prod') {
-        context.production = true;
-      } 
-
-      return helper.render(template, context, page.name);
-    }));
-// write the rendered string to file
-    yield Promise.all(renderResults.map(result => {
-      return fs.writeFile(`${tmpDir}/${result.name}.html`, result.content, 'utf8');
-    }));
-
-  }).then(function () {
-    browserSync.reload('*.html');
-  }, function(err) {
-    console.log(err.stack);
-  });
+  return buildHTML()
+    .then(() => {
+      browserSync.reload('*.html');
+      return Promise.resolve();
+    })
+    .catch(err => {
+      console.log(err)
+    })
 })
 
 gulp.task('styles', function styles() {
-  const dest = '.tmp/styles';
+  const dest = `${publicDir}/styles`;
 
-  return gulp.src('client/*.scss')
+  return gulp.src('client/main.scss')
   .pipe(sourcemaps.init({loadMaps:true}))
   .pipe(sass({
     outputStyle: 'expanded',
@@ -127,33 +59,15 @@ gulp.task('styles', function styles() {
 });
 
 
-let cache;
 gulp.task('scripts', () => {
-  const config = {
-    entry: 'client/main.js',
-    plugins: [
-      babel({
-        exclude: 'node_modules/**'
-      })
-    ],
-    cache: cache
-  }
-
-  if (process.env.NODE_ENV === 'production') {
-    config.plugins.push(babili());
-  }
-  
-  return rollup(config).then(function(bundle) {
-    cache = bundle;
-    return bundle.write({
-      dest: `${publicDir}/scripts/main.js`,
-      format: 'iife',
-      sourceMap: true
+  return buildES('client/main.js', `${publicDir}/scripts/main.js`)
+    .then(() => {
+      browserSync.reload('*.html');
+      return Promise.resolve();
+    })
+    .catch(err => {
+      console.log(err);
     });
-  })
-  .catch(err => {
-    console.log(err);
-  });
 });
 
 gulp.task('serve', 
@@ -163,7 +77,7 @@ gulp.task('serve',
     function serve() {
     browserSync.init({
       server: {
-        baseDir: ['.tmp', 'public'],
+        baseDir: ['public', 'client'],
         routes: {
           '/bower_components': 'bower_components'
         }
@@ -171,8 +85,8 @@ gulp.task('serve',
       files: 'public/**/*.{png,jpg,gif}'
     });
 
-    gulp.watch(['views/**/*.njk', 'data/*.json', 'news/**/*.md'], gulp.parallel('html'));
-
+    gulp.watch(['views/**/**', 'data/**/*.json'], gulp.parallel('html'));
+    gulp.watch('client/**/*.js', gulp.parallel('scripts'));
     gulp.watch('client/scss/**/**/*.scss', gulp.parallel('styles'));
   })
 );
@@ -183,8 +97,8 @@ gulp.task('serve',
 gulp.task('gm', () => {
   imgRatio = 9/16;
 
-  return gulp.src('pic/*.jpg')
-    .pipe($.gm(function(gmfile, done) {
+  return gulp.src('pic/*.*')
+    .pipe(gm(function(gmfile, done) {
       console.log('Processing file: ', gmfile.source);
       gmfile.size(function(err, size) {
         if (size.width > size.height) {
@@ -206,39 +120,24 @@ gulp.task('gm', () => {
 /**********deploy***********/
 
 gulp.task('images', function () {
-  const SRC = './public/images/**/*.{svg,png,jpg,jpeg,gif}' ;
-  const DEST = path.resolve(__dirname, deployDir, projectName, 'images');
-  console.log('Copying images to:', DEST);
+  const SRC = './client/images/**/*.{svg,png,jpg,jpeg,gif}' ;
 
   return gulp.src(SRC)
-    .pipe($.imagemin({
+    .pipe(imagemin({
       progressive: true,
       interlaced: true,
       svgoPlugins: [{cleanupIDs: false}],
       verbose: true
     }))
-    .pipe(gulp.dest(DEST));
+    .pipe(gulp.dest('public/images'));
 });
 
 gulp.task('copy', function() {
-  const DEST = path.resolve(__dirname, deployDir, projectName);
-  console.log(`Copy .tmp dir to: ${DEST}`);
+  const dest = path.resolve(__dirname, deployDir, projectName);
+  console.log(`Copy from public dir to: ${dest}`);
 
-  return gulp.src('.tmp/**/*.*')
-    .pipe($.if('*.html', 
-      $.htmlmin({
-        removeComments: true,
-        collapseWhitespace: true,
-        removeAttributeQuotes: true,
-      })
-    ))
-    .pipe($.size({
-      gzip: true,
-      showFiles: true
-    }))
-    .pipe(gulp.dest(DEST));
+  return gulp.src('public/**/**')
+    .pipe(gulp.dest(dest));
 });
 
-gulp.task('build', gulp.series('clean', 'prod', gulp.parallel('html', 'styles', 'webpack'), 'dev'));
-
-gulp.task('deploy', gulp.series('build', 'copy', 'images'));
+gulp.task('build', gulp.series('prod', gulp.parallel('html', 'styles', 'scripts', 'images'), 'copy'));

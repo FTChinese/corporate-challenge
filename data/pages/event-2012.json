@@ -1,0 +1,27 @@
+{
+  "template": "past-event.html",
+  "meta": {
+    "title": "摩根大通企业竞跑赛2012",
+    "description": "",
+    "og": {
+      "title": "",
+      "description": "",
+      "image": ""
+    }
+  },
+  "swipingImages": [
+    "images/2012/2012-01.jpg",
+    "images/2012/2012-02.jpg",
+    "images/2012/2012-03.jpg",
+    "images/2012/2012-04.jpg"
+  ],
+  "video": {
+    "src": "http://p.bokecc.com/player?vid=CAEC70E21B1C655A9C33DC5901307461&siteid=922662811F1A49E9&autoStart=false&width=100%&height=100%&playerid=3571A3BF2AEC8829&playertype=1"
+  },
+  "articles": [
+    "articles/2012/2012-news01.md",
+    "articles/2012/2012-news02.md",
+    "articles/2012/2012-news03.md",
+    "articles/2012/2012-news04.md"
+  ]
+}

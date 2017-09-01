@@ -1,29 +1,41 @@
+$teal-1: #26747a;
+$teal-3: #0f8a99;
+$pink: #fff1e0;
+$claret: #9e2f50;
+$pink-tint1: #f7e9d9;
+$pink-tint2: #e9decf;
+$pink-tint4: #a7a59b;
+$grey-tint2: #999999;
+$grey-tint3: #777777;
+$grey-tint5: #333333;
+
+@mixin aspectRatio($ratio: 9/16) {
+	@if unit($ratio) != "%" {
+		$ratio: percentage($ratio);
+	}
+	position: relative;
+	display: block;
+	height: 0;
+	padding: 0;
+	overflow: hidden;
+	padding-top: $ratio;
+}
+
+@mixin clearfix {
+	&:after {
+		clear: both;
+		content: "";
+		display: table;
+	}
+}
+
 body {
   font-family: "Helvetica Neue", "Lucida Grande", Verdana, "PingFang SC", "PingFang TC", "Hiragino Sans GB", "Heiti SC", "Heiti TC", "WenQuanYi Micro Hei", "Microsoft YaHei", "Microsoft JhengHei", STHeiti, sans-serif;
   margin: 0;
   padding: 0;
-  @include oColorsFor(page);
+  background-color: $pink;
+  color: $grey-tint5;
 }
-
-@include oGridGenerate;
-@include lazyloadMedia;
-
-[data-media-ratio="1/2"] {
-  @include igSetMediaRatio(1/2);
-}
-[data-media-ratio="9/16"] {
-  @include igSetMediaRatio(9/16);
-}
-[data-media-ratio="16/15"] {
-  @include igSetMediaRatio(16/15); 
-}
-[data-media-ratio="7/5"] {
-  @include igSetMediaRatio(7/5);
-}
-[data-media-ratio="3/2"] {
-  @include igSetMediaRatio(3/2);
-}
-
 
 figure {
   margin: 0;
@@ -38,11 +50,38 @@ ol {
 }
 
 a {
-  @include oColorsFor(ig-link, text);
+  color: $teal-3;
   text-decoration: none;
 }
 
 p {
   font-size: 18px;
   line-height: 1.7;
+}
+
+.o-grid-container {
+  @include oGridContainer;
+}
+.o-grid-row {
+  @include oGridRow;
+}
+.o-grid-colspan {
+  @include oGridColspan;
+}
+.banner-col {
+  @include oGridColspan((default: 12, M: 6), $width-only: true);
+}
+.footer-col {
+  @include oGridColspan((default: 12, S: 6, M: 4), $width-only: true);
+}
+.content-main {
+  @include oGridColspan((default: 12, M: 8), $width-only: true);
+}
+.content-aside {
+  @include oGridColspan((default: 12, M: 4), $width-only: true);
+}
+.footer-title {
+  border-top: 1px solid $pink-tint4;
+  background-color: $pink-tint2;
+  margin-bottom: 0.5em;
 }
