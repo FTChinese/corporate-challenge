@@ -2,15 +2,15 @@
 {% block main %}
 <div class="banner-media o-grid-container">
 	<div class="o-grid-row">
-		{% if bannerPitch.image %}
-			{% set image = bannerPitch.image %}
+		{% if pitch.image %}
+			{% set image = pitch.image %}
 			<div class="banner-col o-grid-colspan" data-o-grid-colspan="12 M6">
 				{% include "partials/ig-image.html" %}
 			</div>
 		{% endif %}
 
-		{% if bannerPitch.video %}
-			{% set video = bannerPitch.video %}
+		{% if pitch.video %}
+			{% set video = pitch.video %}
 			<div class="banner-col o-grid-colspan" data-o-grid-colspan="12 M6">
 				{% include "partials/ig-video.html" %}
 			</div>

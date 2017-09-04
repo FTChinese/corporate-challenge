@@ -1,9 +1,12 @@
 {
-  "asidePitch": {
+  "pitch": {
     "image": {
       "link": "https://www.jpmorganchasecc.com/city/shanghai",
       "src": "images/2017-pitch.jpg",
       "ratio": "9/16"
+    },
+    "video": {
+      "src": "http://p.bokecc.com/player?vid=402E9E7943F29BFD9C33DC5901307461&siteid=922662811F1A49E9&autoStart=false&width=100%&height=100%&playerid=3571A3BF2AEC8829&playertype=1"
     }
   },
   "pastSnapshots": [

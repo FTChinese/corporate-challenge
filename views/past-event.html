@@ -48,8 +48,8 @@
 		</div>
 		<aside class="o-grid-colspan content-aside">
 			<div class="content-aside__wrapper">
-				{% if asidePitch.image %}
-					{% set image = asidePitch.image %}
+				{% if pitch.image %}
+					{% set image = pitch.image %}
 					{% include "partials/ig-image.html" %}
 				{% endif %}
 				{% markdown "articles/aside-pitch.md" %}

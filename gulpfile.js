@@ -78,11 +78,14 @@ gulp.task('serve',
     browserSync.init({
       server: {
         baseDir: ['public', 'client'],
+        // list directories instead of opeing index.html
+        directory: true,
         routes: {
           '/bower_components': 'bower_components'
         }
       },
-      files: 'public/**/*.{png,jpg,gif}'
+      // watch files
+      files: 'client/images/*.{png,jpg,gif}'
     });
 
     gulp.watch(['views/**/**', 'data/**/*.json'], gulp.parallel('html'));
