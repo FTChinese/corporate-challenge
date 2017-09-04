@@ -16,6 +16,9 @@ async function build(input, output) {
     ],
     cache: cache
   };
+  if (process.env.NODE_ENV === 'production') {
+    inputOptions.plugins.push(babili());
+  }
   const outputOptions = {
     file: path.resolve(process.cwd(), output),
     format: 'iife',

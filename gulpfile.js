@@ -40,7 +40,7 @@ gulp.task('styles', function styles() {
   return gulp.src('client/main.scss')
   .pipe(sourcemaps.init({loadMaps:true}))
   .pipe(sass({
-    outputStyle: 'expanded',
+    outputStyle: process.env.NODE_ENV === 'production' ? 'compressed' : 'expanded',
     precision: 10,
     includePaths: ['bower_components']
   }).on('error', (err) => {
