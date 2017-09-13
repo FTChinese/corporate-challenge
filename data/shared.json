@@ -1,5 +1,10 @@
 {
   "pitch": {
+    "mobile": {
+      "link": "https://www.jpmorganchasecc.com/city/shanghai",
+      "src": "images/2017-pitch-modile.jpg",
+      "ratio": "30/323" 
+    },
     "image": {
       "link": "https://www.jpmorganchasecc.com/city/shanghai",
       "src": "images/2017-pitch.jpg",

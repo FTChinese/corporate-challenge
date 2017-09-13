@@ -71,6 +71,19 @@ p {
 .banner-col {
   @include oGridColspan((default: 12, M: 6), $width-only: true);
 }
+// .banner-col.banner-col__mobile {
+//   @include oGridRespondTo(M) {
+//     display: none;
+//   }
+// }
+// .banner-col.banner-col__desktop {
+//   @include oGridRespondTo(M) {
+//     display: block;
+//   }
+//   @include oGridRespondTo($until: M) {
+//     display: none;
+//   }
+// }
 .footer-col {
   @include oGridColspan((default: 12, S: 6, M: 4), $width-only: true);
 }

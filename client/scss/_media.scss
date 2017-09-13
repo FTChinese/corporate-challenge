@@ -31,6 +31,10 @@
 		background-color: $grey-tint5;
 	}
 
+	&__wrapper[data-aspect-ratio="30/323"] {
+		padding-top: percentage(30/323);
+	}
+
 	&__wrapper[data-aspect-ratio="16/15"] {
 		padding-top: percentage(16/15);
 	}
