@@ -15,13 +15,6 @@ const deployDir = '../ft-interact/';
 const projectName = path.basename(__dirname);
 const publicDir = 'public';
 
-gulp.task('prod', function(done) {
-  return Promise.resolve(process.env.NODE_ENV = 'production');
-});
-
-gulp.task('dev', function(done) {
-  return Promise.resolve(process.env.NODE_ENV = 'development')
-});
 
 gulp.task('html', () => {
   return buildHTML()
@@ -142,5 +135,3 @@ gulp.task('copy', function() {
   return gulp.src('public/**/**')
     .pipe(gulp.dest(dest));
 });
-
-gulp.task('build', gulp.series('prod', gulp.parallel('html', 'styles', 'scripts', 'images'), 'copy'));

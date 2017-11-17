@@ -2,19 +2,25 @@
   "pitch": {
     "mobile": {
       "link": "https://www.jpmorganchasecc.com/city/shanghai",
-      "src": "images/2017-pitch-modile.jpg",
-      "ratio": "30/323" 
+      "src": "images/2017-post-event.png",
+      "ratio": "9/16" 
     },
     "image": {
       "link": "https://www.jpmorganchasecc.com/city/shanghai",
-      "src": "images/2017-pitch.jpg",
+      "src": "images/2017-post-event.png",
       "ratio": "9/16"
     },
     "video": {
-      "src": "http://p.bokecc.com/player?vid=402E9E7943F29BFD9C33DC5901307461&siteid=922662811F1A49E9&autoStart=false&width=100%&height=100%&playerid=3571A3BF2AEC8829&playertype=1"
+      "src": "https://p.bokecc.com/player?vid=8F21840683CFAF2D9C33DC5901307461&siteid=922662811F1A49E9&autoStart=false&width=100%&height=100%&playerid=3571A3BF2AEC8829&playertype=1"
     }
   },
   "pastSnapshots": [
+    {
+      "ratio": "16/15",
+      "caption": 2017,
+      "src": "images/thumbs/thumb-2017.jpg",
+      "link": "2017.html"
+    },
     {
       "ratio": "16/15",
       "caption": 2016,

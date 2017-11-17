@@ -1,7 +1,7 @@
 const path = require('path');
 const rollup = require('rollup');
 const bowerResolve = require('rollup-plugin-bower-resolve');
-const babili = require('rollup-plugin-babili');
+const minify = require('rollup-plugin-babel-minify');
 const babel = require('rollup-plugin-babel');
 
 let cache;
@@ -17,7 +17,7 @@ async function build(input, output) {
     cache: cache
   };
   if (process.env.NODE_ENV === 'production') {
-    inputOptions.plugins.push(babili());
+    inputOptions.plugins.push(minify());
   }
   const outputOptions = {
     file: path.resolve(process.cwd(), output),
