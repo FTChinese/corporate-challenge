@@ -16,14 +16,14 @@ const outDir = path.resolve(__dirname, '../public');
  * The output html is named after the json file.
  * @param {String} fileName - the json file name
  */
-async function buildPage(file, extraData={}) {
+async function buildPage(file, sharedData={}) {
   const isProduction = process.env.NODE_ENV === 'production'
   const baseName = path.basename(file, '.json');
   console.log(`Loading json file: ${file}`);
 
   const data = await loadJsonFile(file);
-  // Merge extraData with data from fileName
-  const context = Object.assign(extraData, data);
+  // Merge sharedData with data from fileName
+  const context = Object.assign({}, data, sharedData);
   context.currentYear = (new Date()).getFullYear();
   console.log(context.currentYear);
 
