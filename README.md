@@ -12,7 +12,7 @@ Json data used for templates are put into `data` directory.
 
 `data/base.json` is the common data used by all html files.
 
-`data/page-list.sjon` specifies what html files will be produced. The data is an array. Each item in the array correspond to a static html file. `newsList` field in each item is a list of markdown files to be inserted into the html file after converted to html.
+`data/page-list.json` specifies what html files will be produced. The data is an array. Each item in the array correspond to a static html file. `newsList` field in each item is a list of markdown files to be inserted into the html file after converted to html.
 
 The markdown files are put under `news` categorized according to years.
 
