@@ -2,12 +2,12 @@
   "pitch": {
     "mobile": {
       "link": "https://www.jpmorganchasecc.com/city/shanghai",
-      "src": "images/2018-pitch.jpg",
+      "src": "images/2019-pitch.jpg",
       "ratio": "9/16" 
     },
     "image": {
       "link": "https://www.jpmorganchasecc.com/city/shanghai",
-      "src": "images/2018-pitch.jpg",
+      "src": "images/2019-pitch.jpg",
       "ratio": "9/16"
     },
     "video": {
@@ -15,6 +15,12 @@
     }
   },
   "pastSnapshots": [
+    {
+        "ratio": "16/15",
+        "caption": 2018,
+        "src": "images/thumbs/thumb-2018.jpg",
+        "link": "2018.html"
+      },
     {
       "ratio": "16/15",
       "caption": 2017,

@@ -1,0 +1,38 @@
+{
+    "template": "past-event.html",
+    "meta": {
+      "title": "摩根大通企业竞跑赛2017",
+      "description": "",
+      "og": {
+        "title": "",
+        "description": "",
+        "image": ""
+      }
+    },
+    "swipingImages": [
+      "images/2017/2017-00.JPG",
+      "images/2017/2017-01.JPG",
+      "images/2017/2017-weiweizhong.jpg",
+      "images/2017/2017-tiffny-daiqian.jpg",
+      "images/2017/2017-title03.jpg",
+      "images/2017/2017-title04.jpg",
+      "images/2017/2017-title05.jpg",
+      "images/2017/KING2282.JPG",
+      "images/2017/KING2238.JPG",
+      "images/2017/DSC_9539.JPG",
+      "images/2017/DSC_9482.JPG",
+      "images/2017/DSC_7554.JPG",
+      "images/2017/DONG7048.JPG",
+      "images/2017/DONG7040.JPG",
+      "images/2017/DONG6348.JPG",
+      "images/2017/DONG6345.JPG",
+      "images/2017/AB3K6545.JPG",
+      "images/2017/AB3K6415.JPG"
+    ],
+    "video": {
+      "src": "https://p.bokecc.com/player?vid=8F21840683CFAF2D9C33DC5901307461&siteid=922662811F1A49E9&autoStart=false&width=100%&height=100%&playerid=3571A3BF2AEC8829&playertype=1"
+    },
+    "articles": [
+      "articles/2018/index.md"
+    ]
+  }
