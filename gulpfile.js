@@ -63,6 +63,26 @@ gulp.task('scripts', () => {
     });
 });
 
+// async function linkJs() {
+//     const bundle = await rollup.rollup({
+//       input: "client/main.js",
+//       cache,
+//       plugins: [
+//         // babel({
+//         //   exclude: 'node_modules/**'
+//         // })
+//       ],
+//     });
+  
+//     console.log(bundle.watchFiles);
+  
+//     await bundle.write({
+//       file: `${publicDir}/scripts/main.js`,
+//       format: "iife",
+//       sourcemap: true,
+//     });
+//   }
+
 gulp.task('serve', 
   gulp.parallel(
     'html', 'styles', 'scripts', 
@@ -128,6 +148,8 @@ gulp.task('images', function () {
     .pipe(gulp.dest('public/images'));
 });
 
+
+ exports.build = gulp.parallel('html', 'styles', 'scripts')
 gulp.task('copy', function() {
   const dest = path.resolve(__dirname, deployDir, projectName);
   console.log(`Copy from public dir to: ${dest}`);
